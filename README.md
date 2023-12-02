@@ -54,19 +54,31 @@ output stream, which points to sys.stdout, but the output stream can also be spe
 during the call.
 
 Allen Downey, the author of the book ["Python Basics"][1], notes only one difference between the calling formats
-in [Python2](https://docs.python.org/3/library/functions.html#print)
-and [Python3](https://docs.python.org/3/library/functions.html#print) - the absence of parentheses
-around the call arguments in the second version. In reality, however, parentheses can be present,
+in Python2 and Python3 - the absence of parentheses around the call arguments in the second version. In reality, however, parentheses can be present,
 but the composition of the call arguments is significantly different:
 
-```python2
+[Python2](https://docs.python.org/3/library/functions.html#print)
+```python
 import sys
 print(>>sys.stdout, "Hello world\n")
 ```
 
-```python3
+[Python3](https://docs.python.org/3/library/functions.html#print)
+```python
 import sys
 print("Hello world\n", file=sys.stdout)
 ```
+
+#### Arithmetic operations: + - * / **
+
+* `+` — addition
+* `-` — subtraction
+* `*` — multiplication
+* `/` — division
+* `**` — exponentiation
+
+#### Bit logic operations: ^
+
+* `^` — XOR
 
 [1]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
