@@ -60,7 +60,7 @@ gantt
 
 ## About Language
 
-[Python][^1] is a [high-level, general-purpose, dynamically typed language with garbage-collection][^2]. It is a multi-paradigm programming language initially designed by Guido van Rossum in 1991.
+Python[^1] is a high-level, general-purpose, dynamically typed language with garbage-collection[^2]. It is a multi-paradigm programming language initially designed by Guido van Rossum in 1991.
 
 It became most popular with version 2. The current version is 3, and the second version is no longer maintained.
 
@@ -72,11 +72,11 @@ Python code should be easily readable, as working code is visually formatted thr
 
 Python is a developing language, despite its age, and new features arrive quite frequently
 
-There is an [index][^3] of proposals that already accepted and ones that just proposed.
+There is an index[^3] of proposals that already accepted and ones that just proposed.
 
 ### Zen of Python
 
-A brief and concise way to describe Python's guiding principles is known as the Zen of Python, and yes, it has its own [PEP 20][^4]:
+A brief and concise way to describe Python's guiding principles is known as the Zen of Python, and yes, it has its own PEP 20[^4]:
 
 > The Zen of Python, by Tim Peters
 >
@@ -107,7 +107,7 @@ Python 3 (hereinafter Python) — the target version of the language that intere
 Python can be installed as a standalone package, and there are many ways to do this, varying from one operating system
 to another.
 
-Allen Downey, the author of the book ["Python Basics"][1], suggests using the online service [Python Anywhere](https://www.pythonanywhere.com/), although there are many other platforms available, such as [Google Colab](https://colab.google/).
+Allen Downey, the author of the book "Python Basics"[^5], suggests using the online service [Python Anywhere](https://www.pythonanywhere.com/), although there are many other platforms available, such as [Google Colab](https://colab.google/).
 
 ## Run
 
@@ -150,7 +150,7 @@ The print function is one of the main functions and is located in the global nam
 
 The print method first checks the type of the passed object, and if it is not a string, it invokes conversion. Moreover, the thesis that print outputs "to the screen" is also incorrect. By default, print outputs to the specified output stream, which points to sys.stdout, but the output stream can also be specified by passing it as an argument during the call.
 
-Allen Downey, the author of the book ["Python Basics"][1], notes only one difference between the calling formats in Python2 and Python3 - the absence of parentheses around the call arguments in the second version. In reality, however, parentheses can be present, but the composition of the call arguments is significantly different:
+Allen Downey, the author of the book "Python Basics"[^5], notes only one difference between the calling formats in Python2 and Python3 - the absence of parentheses around the call arguments in the second version. In reality, however, parentheses can be present, but the composition of the call arguments is significantly different:
 
 [Python2](https://docs.python.org/3/library/functions.html#print)
 ```python
@@ -171,3 +171,4 @@ print("Hello world\n", file=sys.stdout)
 [^2]: <https://en.wikipedia.org/wiki/Python_(programming_language)> "Wikipedia page about Python"
 [^3]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
 [^4]: <https://peps.python.org/pep-0020/> "The Zen of Python"
+[^5]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
