@@ -3,8 +3,9 @@ Python learning playground [→ru](README.ru.md)
 
 This repository will document my learning journey with the Python language and its supporting tools.
 
-> [!NOTE] **Disclaimer**
+> [!NOTE]
 >
+> **Disclaimer**
 > I have some prior experience with Python, but I have decided to refresh my knowledge on this topic.
 
 ## Commitment
@@ -59,7 +60,7 @@ gantt
 
 ## About Language
 
-[Python][^3] is a [high-level, general-purpose, dynamically typed language with garbage-collection][^4]. It is a multi-paradigm programming language initially designed by Guido van Rossum in 1991.
+[Python][^1] is a [high-level, general-purpose, dynamically typed language with garbage-collection][^2]. It is a multi-paradigm programming language initially designed by Guido van Rossum in 1991.
 
 It became most popular with version 2. The current version is 3, and the second version is no longer maintained.
 
@@ -71,11 +72,11 @@ Python code should be easily readable, as working code is visually formatted thr
 
 Python is a developing language, despite its age, and new features arrive quite frequently
 
-There is an [index][^5] of proposals that already accepted and ones that just proposed.
+There is an [index][^3] of proposals that already accepted and ones that just proposed.
 
 ### Zen of Python
 
-A brief and concise way to describe Python's guiding principles is known as the Zen of Python, and yes, it has its own [PEP 20][^6]:
+A brief and concise way to describe Python's guiding principles is known as the Zen of Python, and yes, it has its own [PEP 20][^4]:
 
 > The Zen of Python, by Tim Peters
 >
@@ -166,7 +167,7 @@ print("Hello world\n", file=sys.stdout)
 
 [1]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
 [2]: <https://www.goodreads.com/book/show/36522990-illustrated-guide-to-python-3> "Illustrated Guide to Python 3: A Complete Walkthrough of Beginning Python with Unique Illustrations Showing how Python Really Works by Matt Harrison"
-[3]: <https://www.python.org/> "Python official site"
-[4]: <https://en.wikipedia.org/wiki/Python_(programming_language)> "Wikipedia page about Python"
-[5]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
-[6]: <https://peps.python.org/pep-0020/> "The Zen of Python"
+[^1]: <https://www.python.org/> "Python official site"
+[^2]: <https://en.wikipedia.org/wiki/Python_(programming_language)> "Wikipedia page about Python"
+[^3]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
+[^4]: <https://peps.python.org/pep-0020/> "The Zen of Python"
