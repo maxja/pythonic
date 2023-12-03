@@ -19,7 +19,7 @@ First of all, I will compose a learning plan—not too specific, but one that al
 %%{init: {'theme':'neutral'}}%%
 gantt
   dateFormat off
-  axisFormat
+  axisFormat _
   todayMarker off
 
   general 				:general, 	2023-12-02, 1h
@@ -164,9 +164,9 @@ print("Hello world\n", file=sys.stdout)
 ```
 
 
-[^1]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
-[^2]: <https://www.goodreads.com/book/show/36522990-illustrated-guide-to-python-3> "Illustrated Guide to Python 3: A Complete Walkthrough of Beginning Python with Unique Illustrations Showing how Python Really Works by Matt Harrison"
-[^3]: <https://www.python.org/> "Python official site"
-[^4]: <https://en.wikipedia.org/wiki/Python_(programming_language)> "Wikipedia page about Python"
-[^5]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
-[^6]: <https://peps.python.org/pep-0020/> "The Zen of Python"
+[1]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
+[2]: <https://www.goodreads.com/book/show/36522990-illustrated-guide-to-python-3> "Illustrated Guide to Python 3: A Complete Walkthrough of Beginning Python with Unique Illustrations Showing how Python Really Works by Matt Harrison"
+[3]: <https://www.python.org/> "Python official site"
+[4]: <https://en.wikipedia.org/wiki/Python_(programming_language)> "Wikipedia page about Python"
+[5]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
+[6]: <https://peps.python.org/pep-0020/> "The Zen of Python"

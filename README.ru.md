@@ -18,7 +18,7 @@ Python Песочница [→en](README.md)
 %%{init: {'theme':'neutral'}}%%
 gantt
   dateFormat off
-  axisFormat
+  axisFormat _
   todayMarker off
 
   общая информация 				:general, 	2023-12-02, 1h
@@ -164,9 +164,9 @@ print("Hello world\n", file=sys.stdout)
 ```
 
 
-[^1]: <https://www.livelib.ru/book/1005972301-osnovy-python-nauchites-dumat-kak-programmist-allen-b-dauni> "Основы Python. Научитесь думать как программист, 2-е издание. Автор: Аллен Б. Дауни"
-[^2]: <https://www.livelib.ru/book/1002933611-kak-ustroen-python-gid-dlya-razrabotchikov-programmistov-i-interesuyuschihsya-mett-harrison> "Как устроен Python. Гид для разработчиков, программистов и интересующихся. Автор: Мэтт Харрисон"
-[^3]: <https://www.python.org/> "Официальный сайт"
-[^4]: <https://ru.wikipedia.org/wiki/Python> "Страница о языке Python на Wikipedia"
-[^5]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
-[^6]: <https://peps.python.org/pep-0020/> "The Zen of Python"
+[1]: <https://www.livelib.ru/book/1005972301-osnovy-python-nauchites-dumat-kak-programmist-allen-b-dauni> "Основы Python. Научитесь думать как программист, 2-е издание. Автор: Аллен Б. Дауни"
+[2]: <https://www.livelib.ru/book/1002933611-kak-ustroen-python-gid-dlya-razrabotchikov-programmistov-i-interesuyuschihsya-mett-harrison> "Как устроен Python. Гид для разработчиков, программистов и интересующихся. Автор: Мэтт Харрисон"
+[3]: <https://www.python.org/> "Официальный сайт"
+[4]: <https://ru.wikipedia.org/wiki/Python> "Страница о языке Python на Wikipedia"
+[5]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
+[6]: <https://peps.python.org/pep-0020/> "The Zen of Python"
