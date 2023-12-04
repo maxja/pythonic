@@ -180,6 +180,15 @@ print("Hello world\n", file=sys.stdout)
 >
 > Сейчас я не буду подробно останавливаться на всех встроенных функциях. Уточню лишь, что они важны и поставляются разными модулями в глобальное пространство. О них можно прочесть на официальном сайте[^9], вызвав метод `help` со строкой `'builtins'`: `help('builtins')`, или выполнив метод `dir` на объекте `__builtins__`: `dir(__builtins__)`.
 
+### Литералы и Типы
+
+Литералами являются значимые комбинации символов, которые могут быть строковыми[^10] или числовыми[^11].
+
+Характерной особенностью строковых литералов[^10] является последовательность символов, заключенная в парные кавычки. С кавычек с каждой стороны может быть одна одинарная `'` или двойная `"`, а также три `'''`, `"""` в случае необходимости создания строк с сохранением переносов. Кроме того, строки могут иметь префиксы управления.
+
+Числовые литералы[^11] представляют собой запись чисел в бинарной, восьмеричной, десятичной и шестнадцатеричной системах счисления. Используется префиксный оператор для отрицательных чисел или его отсутствие для положительных. Для десятичных чисел может применяться форма экспоненциальной записи, запись с плавающей точкой и указание мнимой части числа. С введением PEP 515[^12] появилась возможность визуального разделения разрядов символом нижнего подчеркивания `_`.
+
+
 [1]: <https://www.livelib.ru/book/1005972301-osnovy-python-nauchites-dumat-kak-programmist-allen-b-dauni> "Основы Python. Научитесь думать как программист, 2-е издание. Автор: Аллен Б. Дауни"
 [2]: <https://www.livelib.ru/book/1002933611-kak-ustroen-python-gid-dlya-razrabotchikov-programmistov-i-interesuyuschihsya-mett-harrison> "Как устроен Python. Гид для разработчиков, программистов и интересующихся. Автор: Мэтт Харрисон"
 [^1]: <https://www.python.org/> "Официальный сайт"
@@ -191,3 +200,5 @@ print("Hello world\n", file=sys.stdout)
 [^7]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
 [^8]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
 [^9]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
+[^10]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
+[^11]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
