@@ -60,7 +60,7 @@ gantt
 
 ## About Language
 
-Python[^1] is a high-level, general-purpose, dynamically typed language with garbage-collection[^2]. It is a multi-paradigm programming language initially designed by Guido van Rossum in 1991.
+Python[^1] is a high-level, general-purpose, dynamically typed, interpreted language with garbage-collection[^2]. It is a multi-paradigm programming language initially designed by Guido van Rossum in 1991.
 
 It became most popular with version 2. The current version is 3, and the second version is no longer maintained.
 
@@ -164,6 +164,19 @@ import sys
 print("Hello world\n", file=sys.stdout)
 ```
 
+#### input
+
+The input[^6] function, much like print, is one of the basic, globally available functions. It allows transitioning the console into the input mode, and a new line (`EOL`) serves as confirmation of the entered data.
+
+#### dir
+The dir[^7] function returns a list of names available in the specified scope. Without specifying arguments, the scope available at the execution level will be selected. If you pass an object, its methods and attributes will be returned.
+
+#### help
+The built-in help[^8] function is particularly useful in REPL mode. Without arguments, calling the function initializes an interactive console for documentation search. When specifying the name of a function or class, the interpreter will attempt to find the corresponding element among the registered ones and output the help described in the documentation block.
+
+> [!TIP]
+>
+> I won't go into detail about all the built-in functions right now, but I'll clarify that they are important and are supplied by various modules to the global namespace. You can read about them on the official website[^9] by calling the `help` method with the string `'builtins'`: `help('builtins')`, or by calling the `dir` method on the `__builtins__` object: `dir(__builtins__)`.
 
 [1]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
 [2]: <https://www.goodreads.com/book/show/36522990-illustrated-guide-to-python-3> "Illustrated Guide to Python 3: A Complete Walkthrough of Beginning Python with Unique Illustrations Showing how Python Really Works by Matt Harrison"
@@ -172,3 +185,7 @@ print("Hello world\n", file=sys.stdout)
 [^3]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
 [^4]: <https://peps.python.org/pep-0020/> "The Zen of Python"
 [^5]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
+[^6]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in Official documentation"
+[^7]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
+[^8]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
+[^9]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
