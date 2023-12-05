@@ -186,7 +186,45 @@ print("Hello world\n", file=sys.stdout)
 
 Характерной особенностью строковых литералов[^10] является последовательность символов, заключенная в парные кавычки. С кавычек с каждой стороны может быть одна одинарная `'` или двойная `"`, а также три `'''`, `"""` в случае необходимости создания строк с сохранением переносов. Кроме того, строки могут иметь префиксы управления.
 
+```python
+'It\'s a string literal'
+
+"This is also a string literal"
+
+'''
+It's is a multi
+line string
+'''
+
+"""
+And this is a also multi
+line string
+"""
+```
+
 Числовые литералы[^11] представляют собой запись чисел в бинарной, восьмеричной, десятичной и шестнадцатеричной системах счисления. Используется префиксный оператор для отрицательных чисел или его отсутствие для положительных. Для десятичных чисел может применяться форма экспоненциальной записи, запись с плавающей точкой и указание мнимой части числа. С введением PEP 515[^12] появилась возможность визуального разделения разрядов символом нижнего подчеркивания `_`.
+
+```python
+# integers
+0
+41
+0b101001
+0o51
+0x29
+2_023
+-41
+
+# floats
+0.
+0.30684931506
+.30684931506
+0.2023e4
+306_849.0e-6
+```
+
+> [!CAUTION]
+>
+> С цифры 0 не может начинаться целое число.
 
 
 [1]: <https://www.livelib.ru/book/1005972301-osnovy-python-nauchites-dumat-kak-programmist-allen-b-dauni> "Основы Python. Научитесь думать как программист, 2-е издание. Автор: Аллен Б. Дауни"
@@ -201,4 +239,5 @@ print("Hello world\n", file=sys.stdout)
 [^8]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
 [^9]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
 [^10]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
-[^11]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
+[^11]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
+[^12]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"

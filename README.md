@@ -184,8 +184,45 @@ Literals are meaningful combinations of characters and can be either string lite
 
 The distinctive feature of the former is a sequence of characters enclosed in paired quotes. On each side, you can use either a single `'` or double `"` quote, or three consecutive `'''` or `"""` when multiline strings with line breaks are needed. Additionally, strings may have control prefixes.
 
+```python
+'It\'s a string literal'
+
+"This is also a string literal"
+
+'''
+It's is a multi
+line string
+'''
+
+"""
+And this is a also multi
+line string
+"""
+```
+
 The latter involve the representation of numbers in binary, octal, decimal, and hexadecimal formats. A prefix operator is used for negative numbers or omitted for positive ones. For decimal numbers, exponential notation and floating-point representation may exist, along with a specification for imaginary numbers. Furthermore, with the introduction of PEP 515[^12], there is an option for visual separation of digits using the underscore symbol `_`.
 
+```python
+# integers
+0
+41
+0b101001
+0o51
+0x29
+2_023
+-41
+
+# floats
+0.
+0.30684931506
+.30684931506
+0.2023e4
+306_849.0e-6
+```
+
+> [!CAUTION]
+>
+> An integer decimal number cannot begin with the digit 0.
 
 [1]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
 [2]: <https://www.goodreads.com/book/show/36522990-illustrated-guide-to-python-3> "Illustrated Guide to Python 3: A Complete Walkthrough of Beginning Python with Unique Illustrations Showing how Python Really Works by Matt Harrison"
