@@ -178,9 +178,11 @@ The built-in help[^8] function is particularly useful in REPL mode. Without argu
 >
 > I won't go into detail about all the built-in functions right now, but I'll clarify that they are important and are supplied by various modules to the global namespace. You can read about them on the official website[^9] by calling the `help` method with the string `'builtins'`: `help('builtins')`, or by calling the `dir` method on the `__builtins__` object: `dir(__builtins__)`.
 
-### Literals and Types
+### Literals
 
 Literals are meaningful combinations of characters and can be either string literals[^10] or numeric ones[^11].
+
+#### Strings
 
 The distinctive feature of the former is a sequence of characters enclosed in paired quotes. On each side, you can use either a single `'` or double `"` quote, or three consecutive `'''` or `"""` when multiline strings with line breaks are needed. Additionally, strings may have control prefixes.
 
@@ -200,7 +202,9 @@ line string
 """
 ```
 
-The latter involve the representation of numbers in binary, octal, decimal, and hexadecimal formats. A prefix operator is used for negative numbers or omitted for positive ones. For decimal numbers, exponential notation and floating-point representation may exist, along with a specification for imaginary numbers. Furthermore, with the introduction of PEP 515[^12], there is an option for visual separation of digits using the underscore symbol `_`.
+#### Numbers
+
+The latter involve the representation of numbers in binary, octal, decimal, and hexadecimal formats[^11]. A prefix operator is used for negative numbers or omitted for positive ones. For decimal numbers, exponential notation and floating-point representation may exist, along with a specification for imaginary numbers. Furthermore, with the introduction of PEP 515[^12], there is an option for visual separation of digits using the underscore symbol `_`.
 
 ```python
 # integers
@@ -223,6 +227,8 @@ The latter involve the representation of numbers in binary, octal, decimal, and 
 > [!CAUTION]
 >
 > An integer decimal number cannot begin with the digit 0.
+
+---
 
 [1]: <https://www.goodreads.com/book/show/14514306-think-python> "Think Python, 2nd ed by Allen B. Downey"
 [2]: <https://www.goodreads.com/book/show/36522990-illustrated-guide-to-python-3> "Illustrated Guide to Python 3: A Complete Walkthrough of Beginning Python with Unique Illustrations Showing how Python Really Works by Matt Harrison"
