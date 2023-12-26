@@ -64,48 +64,59 @@ gantt
 
 ## Литературный список
 
-1. [«Основы Python. Научитесь думать как программист», 2-е издание. Аллен Б. Дауни][^1]
-2. [«Как устроен Python. Гид для разработчиков, программистов и интересующихся». Мэтт Харрисон][^2]
+1. «Основы Python. Научитесь думать как программист», 2-е издание. Аллен Б. Дауни[^1]
+2. «Как устроен Python. Гид для разработчиков, программистов и интересующихся». Мэтт Харрисон[^2]
 
 ## О Языке
 
-Python[^3] - высокоуровневый, универсальный, динамически типизированный, интерпретируемый язык со сборщиком мусора[^4]. Язык разработан Гвидо ван Россумом в 1991 году.
+Python[^3] - высокоуровневый, универсальный, динамически типизированный,
+интерпретируемый язык со сборщиком мусора[^4]. Язык разработан Гвидо ван Россумом
+в 1991 году.
 
-Он приобрёл популярность ко второй версии, а 3я версия актуальна на сегодняшний день. Вторя версия уже не поддерживается.
+Он приобрёл популярность ко второй версии, а 3я версия актуальна
+на сегодняшний день. Вторя версия уже не поддерживается.
 
 ### Синтаксис и семантика
 
-Код на Python должен быть легко читаемым, так как рабочий код визуально форматируется с использованием отступов и отсутствия фигурных скобок вокруг блоков.
+Код на Python призван быть легко читаемым, так как он визуально форматируется
+с использованием отступов, а выражения не оборачиваются в большое количество
+вспомогательных символов, — нет привычной точки с запятой, отделяющей выражение,
+и фигурных скобок, выделяющих смысловой блок программы.
 
-### Предложения по расширению языка
+### Развитие языка
 
-Python - это развивающийся язык программирования, несмотря на свой возраст, и новые функции появляются довольно часто.
+Python, несмотря на свой возраст, это развивающийся язык, который развивается
+сообществом и комитетами при фонде[^5].
 
-Полный индекс[^3] предложений, которые уже приняты, и тех, которые только что были предложены.
+Развитие языка происходит через систему оценки предложений PEP[^6], из которых
+формируется описание языка.
+
+У языка есть лозунг, который задаёт рамки его развития.
 
 ### Zen of Python
 
-Краткий и лаконичный способ описать принципы руководства Python, известные как Zen of Python, и да, у него есть свой собственный PEP 20[^4], (перевод):
+Существует краткий и лаконичный способ описать принципы которыми руководствуются
+разработчики Python, они известны как Zen of Python, и у них есть свой PEP 20[^7].
 
 > Красивое лучше, чем уродливое. <br />
-> Явное лучше, чем неявное.  <br />
-> Простое лучше, чем сложное.  <br />
-> Сложное лучше, чем запутанное.  <br />
-> Плоское лучше, чем вложенное.  <br />
-> Разреженное лучше, чем плотное.  <br />
-> Читаемость имеет значение.  <br />
-> Особые случаи не настолько особые, чтобы нарушать правила.  <br />
-> При этом практичность важнее безупречности.  <br />
-> Ошибки никогда не должны замалчиваться.  <br />
-> Если они не замалчиваются явно.  <br />
-> Встретив двусмысленность, отбрось искушение угадать.  <br />
-> Должен существовать один и, желательно, только один очевидный способ сделать это.  <br />
-> Хотя он поначалу может быть и не очевиден, если вы не голландец.  <br />
-> Сейчас лучше, чем никогда.  <br />
-> Хотя никогда зачастую лучше, чем прямо сейчас.  <br />
-> Если реализацию сложно объяснить — идея плоха.  <br />
-> Если реализацию легко объяснить — идея, возможно, хороша.  <br />
-> Пространства имён — отличная штука! Будем делать их больше!  <br />
+> Явное лучше, чем неявное. <br />
+> Простое лучше, чем сложное. <br />
+> Сложное лучше, чем запутанное. <br />
+> Плоское лучше, чем вложенное. <br />
+> Разреженное лучше, чем плотное. <br />
+> Читаемость имеет значение. <br />
+> Особые случаи не настолько особые, чтобы нарушать правила. <br />
+> При этом практичность важнее безупречности. <br />
+> Ошибки никогда не должны замалчиваться. <br />
+> Если они не замалчиваются явно. <br />
+> Встретив двусмысленность, отбрось искушение угадать. <br />
+> Должен существовать один и, желательно, только один очевидный способ сделать это. <br />
+> Хотя он поначалу может быть и не очевиден, если вы не голландец. <br />
+> Сейчас лучше, чем никогда. <br />
+> Хотя никогда зачастую лучше, чем прямо сейчас. <br />
+> Если реализацию сложно объяснить — идея плоха. <br />
+> Если реализацию легко объяснить — идея, возможно, хороша. <br />
+> Пространства имён — отличная штука! Будем делать их больше! <br />
 
 ## Установка
 
@@ -464,15 +475,16 @@ and, or, not ( & | ^ )
 [^2]: <https://www.livelib.ru/book/1002933611-kak-ustroen-python-gid-dlya-razrabotchikov-programmistov-i-interesuyuschihsya-mett-harrison> "Как устроен Python. Гид для разработчиков, программистов и интересующихся. Автор: Мэтт Харрисон"
 [^3]: <https://www.python.org/> "Официальный сайт"
 [^4]: <https://ru.wikipedia.org/wiki/Python> "Страница о языке Python на Wikipedia"
-[^5]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
-[^6]: <https://peps.python.org/pep-0020/> "The Zen of Python"
-[^7]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in Official documentation"
-[^8]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
-[^9]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
-[^10]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
-[^11]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
-[^12]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
-[^13]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
-[^14]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
-[^15]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
-[^16]: <https://docs.python.org/3/library/stdtypes.html#typebool>
+[^5]: <https://legacy.python.org/psf/committees/> "Раздел о комитетах фонда Python Software Foundation"
+[^6]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
+[^7]: <https://peps.python.org/pep-0020/> "The Zen of Python"
+[^8]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in Official documentation"
+[^9]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
+[^10]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
+[^11]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
+[^12]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
+[^13]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
+[^14]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
+[^15]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
+[^16]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
+[^17]: <https://docs.python.org/3/library/stdtypes.html#typebool>
