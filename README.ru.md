@@ -31,35 +31,35 @@ gantt
   axisFormat %d
   todayMarker off
 
-  общая информация      :general,    2023-12-02, 1h
-  базовые функции       :basic,      after general, 1h
-  литералы, типы        :types,      after basic, 3h
-  переменные, константы :var_const,  after types, 1h
+  общая информация      :general,    0, 2h
+  базовые функции       :basic,      after general, 2h
+  литералы, типы        :types,      after basic, 6h
+  переменные            :var_const,  after types, 3h
   Скрипты :milestone, m1
-  функции               :def,        after var_const, 1h
-  ветвление             :branching,  after def, 2h
-  контейнеры            :containers, after branching, 3h
-  циклы, генераторы, итераторы :loops, after containers, 6h
+  функции               :def,        after var_const, 3h
+  ветвление             :branching,  after def, 5h
+  контейнеры            :containers, after branching, 7h
+  циклы, генераторы, итераторы :loops, after containers, 8h
   ввод / вывод          :io,         after loops, 3h
-  импорт                :import,     after io, 2h
-  исключения            :exceptions, after import, 3h
+  импорт                :import,     after io, 5h
+  исключения            :exceptions, after import, 6h
   Простые приложения :milestone, m2
-  классы                :class,      after exceptions, 8h
-  декораторы            :decorators, after class, 3h
-  json, xml, etc.       :file_formats, after decorators, 3h
+  классы                :class,      after exceptions, 12h
+  декораторы            :decorators, after class, 6h
+  json, xml, etc.       :file_formats, after decorators, 5h
   Приложения по работе с данными :milestone, m3
-  документация          :docs,       after file_formats, 1h
-  тестирование          :testing,    after docs, 4h
-  debug                 :debug,      after testing, 4h
-  типизация             :type_system, after debug, 3h
+  документация          :docs,       after file_formats, 3h
+  тестирование          :testing,    after docs, 8h
+  debug                 :debug,      after testing, 8h
+  типизация             :type_system, after debug, 5h
   Сервисы :milestone, m4
-  сериализация и де-    :serialization, after type_system, 2h
-  потоки                :streams, after serialization, 4h
+  сериализация и де-    :serialization, after type_system, 4h
+  потоки                :streams, after serialization, 8h
   параллелизм           :concurrency, after streams, 16h
   Службы :milestone, m5
-  сеть                  :net, after concurrency, 4h
-  ipc                   :ipc, after net, 2h
-  расширение            :extensions, after ipc, 6h
+  сеть                  :net, after concurrency, 8h
+  ipc                   :ipc, after net, 4h
+  расширение            :extensions, after ipc, 12h
   A grade приложения :milestone, m6
 ```
 
@@ -247,6 +247,7 @@ NAME
     builtins - Built-in functions, types, exceptions, and other objects.
 ...
 ```
+
 ```python
 >>> dir(__builtins__)
 ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', ...
@@ -263,7 +264,8 @@ NAME
 
 ### Строки
 
-Характерной особенностью строковых литералов[^10] является последовательность символов, заключенная в парные кавычки. С кавычек с каждой стороны может быть одна одинарная `'` или двойная `"`, а также три `'''`, `"""` в случае необходимости создания строк с сохранением переносов. Кроме того, строки могут иметь префиксы управления.
+Строковые литералы[^14] отличает наличие кавычек, одинарных, двойных, или серии
+одинарных или двойных кавычек.
 
 ```python
 'It\'s a string literal'
@@ -271,17 +273,33 @@ NAME
 "This is also a string literal"
 
 '''
-It's is a multi
-line string
+It's is a multiline string
+with single quote inside.
 '''
 
 """
-And this is a also multi
-line string
+And this is a also so called
+"multiline" string
 """
 ```
 
-#### Числа
+Кроме того, строковые литералы могут иметь префиксы управления состоящие из `frub`:
+
+```python
+>>> r'\Hello \People' # Raw string
+'\\Hello \\People'
+
+>>> u'Это строка в формате Unicode' # Backward capability from Python2
+'Это строка в формате Unicode'
+
+>>> f'x={1+1} y={{1,2,3,4,5}}' # Formatted string
+'x=2 y={1,2,3,4,5}'
+
+>>> b'\xcf\x84o\xcf\x81\xce\xbdo\xcf\x82'.decode('utf-8')
+'τoρνoς'
+```
+
+### Числа
 
 Числовые литералы[^11] представляют собой запись чисел в бинарной, восьмеричной, десятичной и шестнадцатеричной системах счисления. Используется префиксный оператор для отрицательных чисел или его отсутствие для положительных. Для десятичных чисел может применяться форма экспоненциальной записи, запись с плавающей точкой и указание мнимой части числа. С введением PEP 515[^12] появилась возможность визуального разделения разрядов символом нижнего подчеркивания `_`.
 
