@@ -32,7 +32,8 @@ gantt
   todayMarker off
 
   общая информация      :general,    2023-12-02, 1h
-  типы, литералы        :types,      after general, 3h
+  базовые функции       :basic,      after general, 1h
+  литералы, типы        :types,      after basic, 3h
   переменные, константы :var_const,  after types, 1h
   Скрипты :milestone, m1
   функции               :def,        after var_const, 1h
@@ -174,52 +175,93 @@ Python, несмотря на свой возраст, это развивающ
 > Python в байт-код, который будет выполнен. Такие файлы хранятся в каталоге
 > `__pycache__`, **который** по-умолчанию **не должен добавляться в репозитории VCS**.
 
-## Погружаемся
+## Базовые функции
 
-### Основы
+### print
 
-#### print
+Является одной из основных функций и находится в глобальном пространстве доступа.
+На первый взгляд она «просто» выводит переданное значение «на экран».
+На самом деле все чуть сложнее.
 
-Функция print является одной из основных функций и находится в глобальном пространстве доступа.
-На первый взгляд она «просто» выводит переданное значение «на экран». Однако на самом деле все чуть сложнее.
+Метод `print` сначала проверяет тип переданного объекта, и если он не является
+строкой, вызывает конвертацию. Кроме того, тезис о том, что `print` выводит
+"на экран", тоже не верен, — функция печатает в поток вывода, который
+по-умолчанию задан как стандартный поток вывода (`sys.stdout`), т.е. экран.
+Поток вывода можно также указать, передав его в качестве аргумента вызова.
 
-Метод `print` сначала проверяет тип переданного объекта, и если он не является строкой, вызывает конвертацию. Кроме того, тезис о том, что print выводит "на экран", тоже не верен. По умолчанию print выводит в заданный поток вывода, который указывает на `sys.stdout`, но поток вывода можно также указать, передав его в качестве аргумента вызова.
-
-Аллен Дауни, автор книги «Основы Python»[^5], отмечает лишь одно отличие между форматами вызова в Python2 и Python3 - отсутствие скобок вокруг аргументов вызова во второй версии. На самом же деле скобки могут быть, но состав аргументов вызова разительно отличается:
+Аллен Дауни[^1], отмечает одно отличие между форматами вызова в Python2 и Python3,
+— отсутствие скобок вокруг аргументов вызова для Python2.
+На самом же деле скобки могут быть, но состав аргументов вызова отличается:
 
 [Python2](https://docs.python.org/3/library/functions.html#print)
 ```python
-import sys
-print(>>sys.stdout, "Hello world\n")
+>>> import sys
+>>> print(>>sys.stdout, "Hello world\n")
 ```
 
 [Python3](https://docs.python.org/3/library/functions.html#print)
 ```python
-import sys
-print("Hello world\n", file=sys.stdout)
+>>> import sys
+>>> print("Hello world\n", file=sys.stdout)
 ```
 
-#### input
+### input
 
-Функция `input`[^6], так же как и `print`, является одной из базовых, глобально доступных функций. Она позволяет перевести консоль в режим ожидания ввода, и новая строка (`EOL`) служит подтверждением введенных данных.
+В противовес выводу в Python есть функция захвата ввода, `input`[^10], она так же
+является глобально-доступной. Она позволяет перевести выполнение в режим ожидания
+ввода и дождавшись вызова переноса строки, вернуть результат ввода в виде строки.
 
-#### dir
+```python
+>>> input("Say my name: ")
+Say my name: Mr. White
+'Mr. White'
+```
 
-Функция `dir`[^7] возвращает список имен, доступных в заданной области видимости. Без указания аргументов будет выбрана область видимости, доступная на уровне исполнения. Если передать объект, то будут возвращены его методы и атрибуты.
+### dir
+
+Возвращает список имен, доступных в заданной области видимости[^11].
+Без указания аргументов будет выбрана область видимости, доступная на уровне
+исполнения. Если передать объект, то будут возвращены его методы и атрибуты.
 
 #### help
 
-Встроенная функция `help`[^8] особенно полезна в режиме REPL. Без аргументов вызов функции инициализирует интерактивную консоль поиска по документации. При указании имени функции или класса интерпретатор попытается найти соответствующий элемент среди зарегистрированных и выведет справку, описанную в блоке документации.
+Встроенная функция `help`[^12] особенно полезна в режиме REPL.
+Без аргументов вызов функции инициализирует интерактивную консоль поиска
+по индексу документации. При указании имени функции или класса интерпретатор
+попытается найти соответствующий элемент среди зарегистрированных в текущем
+окружении, и выведет справку.
 
 > [!TIP]
 >
-> Сейчас я не буду подробно останавливаться на всех встроенных функциях. Уточню лишь, что они важны и поставляются разными модулями в глобальное пространство. О них можно прочесть на официальном сайте[^9], вызвав метод `help` со строкой `'builtins'`: `help('builtins')`, или выполнив метод `dir` на объекте `__builtins__`: `dir(__builtins__)`.
+> Я не стану подробно останавливаться на всех встроенных функциях. Уточню лишь,
+> что они важны и поставляются разными модулями в глобальное пространство.
+> О них можно прочесть на официальном сайте[^13], вызвав метод `help` со строкой
+> `'builtins'`, или получить список зарегистрированных имён используя `dir`
+> на объекте `__builtins__`.
 
-### Литералы
+```python
+>>> help('builtins')
+Help on built-in module builtins:
 
-Литералами являются значимые комбинации символов, которые могут быть строковыми[^10] или числовыми[^11].
+NAME
+    builtins - Built-in functions, types, exceptions, and other objects.
+...
+```
+```python
+>>> dir(__builtins__)
+['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', ...
+```
 
-#### Строки
+> [!NOTE]
+>
+> Не стоит переопределять зарезервированные имена встроенных объектов и функций!
+
+## Литералы
+
+Литералами являются значимые комбинации символов, которые могут быть строками[^14]
+или числами[^15].
+
+### Строки
 
 Характерной особенностью строковых литералов[^10] является последовательность символов, заключенная в парные кавычки. С кавычек с каждой стороны может быть одна одинарная `'` или двойная `"`, а также три `'''`, `"""` в случае необходимости создания строк с сохранением переносов. Кроме того, строки могут иметь префиксы управления.
 
@@ -494,13 +536,13 @@ and, or, not ( & | ^ )
 [^7]: <https://peps.python.org/pep-0020/> "The Zen of Python"
 [^8]: <https://www.python.org/downloads/> "Регистр доступных версий Python"
 [^9]: <https://hub.docker.com/_/python> "Docker image for Python"
-[^8]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in Official documentation"
-[^9]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
-[^10]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
-[^11]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
-[^12]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
-[^13]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
-[^14]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
-[^15]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
-[^16]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
-[^17]: <https://docs.python.org/3/library/stdtypes.html#typebool>
+[^10]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in Official documentation"
+[^11]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
+[^12]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
+[^13]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
+[^14]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
+[^15]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
+[^16]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
+[^17]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
+[^18]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
+[^19]: <https://docs.python.org/3/library/stdtypes.html#typebool>
