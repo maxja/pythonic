@@ -1,67 +1,77 @@
 Python Песочница [→en](README.md)
 ===
 
-Этот репозиторий будет документировать мой путь обучения языку Python и сопутствующим инструментам.
+В этом репозиторий я буду документировать путь изучения языка Python и
+сопутствующим инструментам.
 
 > [!NOTE]
 >
 > **Уточнение**
-> У меня уже есть опыт написания приложений на Python, но я решил обновить и актуализировать свои знания.
+> У меня уже есть опыт написания приложений на Python, но я решил обновить
+> и актуализировать свои знания.
 
 ## Обязательство
 
-Я буду использовать различные книги в качестве опорных материалов, буду предоставлять примеры кода и заметки на основе того, что я узнал и понял. Все ссылки на источники будут сопровождаться соответствующими ссылками.
+В качестве опорных материалов я буду использовать различные книги, документацию
+и курсы. Буду предоставлять примеры кода и заметки на основе того, что я узнал
+и понял. Текст буду сопровождать ссылками на материалы.
 
 ## План изучения
-Для начала я составлю план обучения, не слишком подробный, но позволяющий соблюдать определённую последовательность в освоении.
+
+Для начала я составлю план изучения, не слишком подробный,
+но позволяющий соблюдать определённую последовательность в освоении.
+
+Каждый значимый этап будет завершать практическая работа,
+на следующем графике эти работы можно опознать по символу ромба.
 
 ```mermaid
-%%{init: {'theme':'neutral'}}%%
+%%{init: {'theme':'forest'}}%%
 gantt
   dateFormat off
-  axisFormat _
+  axisFormat %d
   todayMarker off
 
-  общая информация 				:general, 	2023-12-02, 1h
-  типы, литералы 				:types, 		after general, 3h
-  переменные, константы 			:var_const, after types, 1h
-  скрипты 						:milestone, m1
-  функции                       :def, 		after var_const, 1h
-  ветвление 						:branching, after def, 2h
-  контейнеры 					:containers, after branching, 3h
-  циклы, генераторы, итераторы 	:loops, 		after containers, 6h
-  ввод / вывод 					:io, 		after loops, 3h
-  импорт 						:import, 	after io, 2h
-  исключения 					:exceptions, after import, 3h
-  D grade приложения 			:milestone, m2
-  классы 						:class, 		after exceptions, 8h
-  декораторы                    :decorators, after class, 3h
-  json, xml, etc. 				:file_formats, after decorators, 3h
-  C grade приложения 					:milestone, m3
-  документация 					:docs, 		after file_formats, 1h
-  тестирование 					:testing, 	after docs, 4h
-  debug 							:debug, 		after testing, 4h
-  типизация 						:type_system, after debug, 3h
-  B grade приложения 					:milestone, m4
-  сериализация и де- 			:serialization, after type_system, 2h
-  потоки 						:streams, 	after serialization, 4h
-  параллелизм 					:concurrency, after streams, 16h
-  производительные приложения 	:milestone, m5
-  сеть 							:net, 		after concurrency, 4h
-  ipc 							:ipc, 		after net, 2h
-  A grade приложения 			:milestone, m6
+  общая информация      :general,    2023-12-02, 1h
+  типы, литералы        :types,      after general, 3h
+  переменные, константы :var_const,  after types, 1h
+  Скрипты :milestone, m1
+  функции               :def,        after var_const, 1h
+  ветвление             :branching,  after def, 2h
+  контейнеры            :containers, after branching, 3h
+  циклы, генераторы, итераторы :loops, after containers, 6h
+  ввод / вывод          :io,         after loops, 3h
+  импорт                :import,     after io, 2h
+  исключения            :exceptions, after import, 3h
+  Простые приложения :milestone, m2
+  классы                :class,      after exceptions, 8h
+  декораторы            :decorators, after class, 3h
+  json, xml, etc.       :file_formats, after decorators, 3h
+  Приложения по работе с данными :milestone, m3
+  документация          :docs,       after file_formats, 1h
+  тестирование          :testing,    after docs, 4h
+  debug                 :debug,      after testing, 4h
+  типизация             :type_system, after debug, 3h
+  Сервисы :milestone, m4
+  сериализация и де-    :serialization, after type_system, 2h
+  потоки                :streams, after serialization, 4h
+  параллелизм           :concurrency, after streams, 16h
+  Службы :milestone, m5
+  сеть                  :net, after concurrency, 4h
+  ipc                   :ipc, after net, 2h
+  расширение            :extensions, after ipc, 6h
+  A grade приложения :milestone, m6
 ```
 
 ## Литературный список
 
-1. [«Основы Python. Научитесь думать как программист», 2-е издание. Аллен Б. Дауни][1]
-2. [«Как устроен Python. Гид для разработчиков, программистов и интересующихся». Мэтт Харрисон][2]
+1. [«Основы Python. Научитесь думать как программист», 2-е издание. Аллен Б. Дауни][^1]
+2. [«Как устроен Python. Гид для разработчиков, программистов и интересующихся». Мэтт Харрисон][^2]
 
 ## О Языке
 
-Python[^1] - это высокоуровневый, универсальный, динамически типизированный, интерпретируемый язык с сборкой мусора[^2]. Это многопарадигменный язык программирования, изначально разработанный Гвидо ван Россумом в 1991 году.
+Python[^3] - высокоуровневый, универсальный, динамически типизированный, интерпретируемый язык со сборщиком мусора[^4]. Язык разработан Гвидо ван Россумом в 1991 году.
 
-Самой популярной стала вторая версия. На текущий момент актуальна третья версия, и вторая больше не поддерживается.
+Он приобрёл популярность ко второй версии, а 3я версия актуальна на сегодняшний день. Вторя версия уже не поддерживается.
 
 ### Синтаксис и семантика
 
@@ -450,21 +460,19 @@ and, or, not ( & | ^ )
 
 ---
 
-[1]: <https://www.livelib.ru/book/1005972301-osnovy-python-nauchites-dumat-kak-programmist-allen-b-dauni> "Основы Python. Научитесь думать как программист, 2-е издание. Автор: Аллен Б. Дауни"
-[2]: <https://www.livelib.ru/book/1002933611-kak-ustroen-python-gid-dlya-razrabotchikov-programmistov-i-interesuyuschihsya-mett-harrison> "Как устроен Python. Гид для разработчиков, программистов и интересующихся. Автор: Мэтт Харрисон"
-[^1]: <https://www.python.org/> "Официальный сайт"
-[^2]: <https://ru.wikipedia.org/wiki/Python> "Страница о языке Python на Wikipedia"
-[^3]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
-[^4]: <https://peps.python.org/pep-0020/> "The Zen of Python"
-[^5]: <https://www.livelib.ru/book/1005972301-osnovy-python-nauchites-dumat-kak-programmist-allen-b-dauni> "Основы Python. Научитесь думать как программист, 2-е издание. Автор: Аллен Б. Дауни"
-[^6]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in Official documentation"
-[^7]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
-[^8]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
-[^9]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
-[^10]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
-[^11]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
-[^12]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
-[^13]: <https://www.livelib.ru/book/1002933611-kak-ustroen-python-gid-dlya-razrabotchikov-programmistov-i-interesuyuschihsya-mett-harrison> "Как устроен Python. Гид для разработчиков, программистов и интересующихся. Автор: Мэтт Харрисон"
+[^1]: <https://www.livelib.ru/book/1005972301-osnovy-python-nauchites-dumat-kak-programmist-allen-b-dauni> "Основы Python. Научитесь думать как программист, 2-е издание. Автор: Аллен Б. Дауни"
+[^2]: <https://www.livelib.ru/book/1002933611-kak-ustroen-python-gid-dlya-razrabotchikov-programmistov-i-interesuyuschihsya-mett-harrison> "Как устроен Python. Гид для разработчиков, программистов и интересующихся. Автор: Мэтт Харрисон"
+[^3]: <https://www.python.org/> "Официальный сайт"
+[^4]: <https://ru.wikipedia.org/wiki/Python> "Страница о языке Python на Wikipedia"
+[^5]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
+[^6]: <https://peps.python.org/pep-0020/> "The Zen of Python"
+[^7]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in Official documentation"
+[^8]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
+[^9]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
+[^10]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
+[^11]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
+[^12]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
+[^13]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
 [^14]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
 [^15]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
 [^16]: <https://docs.python.org/3/library/stdtypes.html#typebool>
