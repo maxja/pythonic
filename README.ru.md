@@ -33,8 +33,10 @@ gantt
 
   общая информация      :general,    0, 2h
   базовые функции       :basic,      after general, 2h
-  литералы, типы        :types,      after basic, 6h
-  переменные            :var_const,  after types, 3h
+  литералы              :literals,   after basic, 2h
+  операторы             :operators,  after literals, 2h
+  переменные            :var_const,  after operators, 3h
+  типы                  :types,      after var_const, 3h
   Скрипты :milestone, m1
   функции               :def,        after var_const, 3h
   ветвление             :branching,  after def, 5h
@@ -257,7 +259,7 @@ NAME
 >
 > Не стоит переопределять зарезервированные имена встроенных объектов и функций!
 
-## Литералы
+## Литералы, Булевы значения и None
 
 Литералами являются значимые комбинации символов, которые могут быть строками[^14]
 или числами[^15].
@@ -301,7 +303,16 @@ And this is a also so called
 
 ### Числа
 
-Числовые литералы[^11] представляют собой запись чисел в бинарной, восьмеричной, десятичной и шестнадцатеричной системах счисления. Используется префиксный оператор для отрицательных чисел или его отсутствие для положительных. Для десятичных чисел может применяться форма экспоненциальной записи, запись с плавающей точкой и указание мнимой части числа. С введением PEP 515[^12] появилась возможность визуального разделения разрядов символом нижнего подчеркивания `_`.
+Или числовые литералы[^15] это набор символов состоящих из знака принадлежности
+числа к подмножеству положительных или отрицательных вещественных чисел (`+`, `-`),
+указателя формата числа (`0b` — двоичный, `0o` — восьмеричный,
+`0x` — шестнадцатеричный), цифр 0,1 для бинарной, 0..9 — десятичной и
+шестнадцатеричной форм, 0..7 — восьмеричной, букв A..F в дополнение к цифрам
+для шестнадцатеричной формы записи и `.` как символа разделителя целой и дробных
+частей числа.
+
+Числа с плавающей точкой, могут быть записаны в экспоненциальной форме, для
+этого используется постфикс `e` c указанием размерности.
 
 ```python
 # integers
@@ -312,7 +323,14 @@ And this is a also so called
 0x29
 2_023
 -41
+```
 
+> [!CAUTION]
+>
+> Целое десятичное число не может начинаться с цифры 0.
+
+
+```python
 # floats
 0.
 0.30684931506
@@ -321,13 +339,31 @@ And this is a also so called
 306_849.0e-6
 ```
 
-> [!CAUTION]
->
-> С цифры 0 не может начинаться целое десятичное число.
+В дополнение к целым числам[^16] и числам с плавающей точкой[^17], существует
+запись литерала для мнимого числа[^18].
 
-### Операторы
+```python
+# imaginary
+3.14j
+1e100j
+```
+С введением PEP 515[^19] появилась возможность визуального разделения разрядов
+символом нижнего подчеркивания `_`.
 
-Для произведение операций над числами, строками булевыми значениями используются операторы.
+### Булевы значения
+
+Это литералы описывающие логическое состояние[^20], с предопределёнными значениями
+и фиксированной формой записи: `True` и `False`.
+
+### None
+
+Зарезервированное слово-литерал, с фиксированной формой записи, выражает
+отсутствие значения[^21].
+
+## Операторы
+
+Для произведение операций над числами, строками и булевыми значениями
+используются различные операторы.
 
 + - * / ** // %
 ^ & | << >> ~
@@ -560,7 +596,13 @@ and, or, not ( & | ^ )
 [^13]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
 [^14]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
 [^15]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
-[^16]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
-[^17]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
-[^18]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
-[^19]: <https://docs.python.org/3/library/stdtypes.html#typebool>
+[^16]: <https://docs.python.org/3/reference/lexical_analysis.html#integer-literals> "Integer literals in Official documentation"
+[^17]: <https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals> "Floating point literals in Official documentation"
+[^18]: <https://docs.python.org/3/reference/lexical_analysis.html#imaginary-literals> "Imaginary literals in Official documentation"
+[^19]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
+[^20]: <https://docs.python.org/3/library/stdtypes.html#boolean-type-bool> "Boolean Type in Official documentation"
+[^21]: <https://docs.python.org/3/reference/datamodel.html#none> "None in Official documentation"
+
+[^20]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
+[^21]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
+[^22]: <https://docs.python.org/3/library/stdtypes.html#typebool>
