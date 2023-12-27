@@ -38,7 +38,7 @@ gantt
   переменные            :var_const,  after operators, 3h
   типы                  :types,      after var_const, 3h
   Скрипты :milestone, m1
-  функции               :def,        after var_const, 3h
+  функции               :def,        after types, 3h
   ветвление             :branching,  after def, 5h
   контейнеры            :containers, after branching, 7h
   циклы, генераторы, итераторы :loops, after containers, 8h
@@ -372,7 +372,7 @@ And this is a also so called
 |  L - R   |            -        |  1 - 2 = -1  |   F - T = -1  |
 |  L * R   |    'a' * 3 = 'aaa'  | -1 * 2 = -2  |   T * T = 1   |
 |  L / R   |            -        |  1 / 2 = 0.5 |   F / T = 0.0 |
-|  L ** R  |            -        |  2 ** 2 = 4  |  T ** T = 1   |
+|  L ** R  |            -        |  5 ** 2 = 25 |  T ** T = 1   |
 |  L // R  |            -        |  5 // 2 = 2  |  T // T = 1   |
 |  L % R   |            -        |   5 % 2 = 1  |   T % T = 0   |
 | _Побитовые операции[^23]_                                  ||||
@@ -530,43 +530,138 @@ current_book: str
 
 ## Типы
 
+### Числовые
+
+Язык поддерживает несколько встроенных типов чисел:
+
+```python
+>>> type(41)
+<class 'int'>
+
+>>> type(0.36)
+<class 'float'>
+
+>>> type(3.14j)
+<class 'complex'>
+```
+
+Поскольку арифметика чисел с плавающей точкой почти у всех машин базируется
+на стандарте IEEE 754[^28], то Python не исключение[^29], и наследуют проблемы
+стандарта.
+
+```python
+>>> 0.1 + 0.1 + 0.1 == 0.3
+False
+```
+
+Язык предлагает различные подходы по устранению подобных проблем:
+
+1. При сравнении использовать функции из пакета math:
+```python
+>>> import math
+>>> math.isclose(0.1 + 0.1 + 0.1, 0.3)
+True
+```
+
+2. Или использовать функцию округления, с указанием точности, при сравнении:
+```python
+>>> round(0.1 + 0.1 + 0.1, ndigits=1) == round(0.3, ndigits=1)
+True
+```
+
+3. Или использовать вспомогательные типы с сохранением точности: `Decimal`[^30] и `Fraction`[^31]:
+
+```python
+>>> import decimal
+>>> decimal.Decimal('0.1') * 3 == decimal.Decimal('0.3')
+True
+
+>>> import fractions
+>>> fractions.Fraction(1, 10) * 3 == fractions.Fraction(3, 10)
+True
+```
+
+Между числовыми типами существует неявное преобразование которое происходит с укрупнением числового пространства: `int` → `float` → `complex`.
+
+```python
+>>> 1 + 0.1 + 1.1j
+(1.1+1.1j)
+```
+
+Явное преобразование типов тоже возможно и даже желательно:
+
+```python
+>>> float(1)
+1.0
+
+>>> complex(1.0)
+(1.0+0j)
+```
+
+> [!CAUTION]
+>
+> В обратную сторону приведение типа лучше не использовать!
+
+Помимо [арифметических операций](#%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%8B)
+язык предлагает набор встроенных методов[^13] и вспомогательных методов[^32]
+модуля `math`, вот часть из них: abs[^33], divmod[^34], pow[^35], math.pow[^36], round[^37], math.trunc[^38], math.floor[^39], math.ceil[^40], math.sqrt[^41], math.cbrt[^42], math.exp[^43], math.log[^44], math.log2[^45], math.log10[^46].
+
+```python
+>>> abs(-0.345)
+0.345
+
+>>> divmod(5, 2) # same as (5 // 2, 5 % 2)
+(2, 1)
+
+>>> pow(5, 2) # same as 5 ** 2
+25
+
+>>> import math
+
+>>> math.pow(5, 2)
+25.0
+
+>>> round(5.35, 1)
+5.3
+
+>>> math.trunc(5.35)
+5
+
+>>> math.floor(5.35)
+5
+>>> math.floor(-5.35)
+6
+
+>>> math.ceil(5.35)
+6
+>>> math.ceil(-5.35)
+5
+
+>>> math.sqrt(25) # same as 25 ** 1/2
+5.0
+
+>>> math.cbrt(27) # same as 27 ** 1/9
+3.0
+
+>>> math.exp(2) # close to math.e ** 2
+7.38905609893065
+
+>>> math.log(2)
+0.6931471805599453
+
+>>> math.log2(4) # same as math.log(4, 2)
+2.0
+
+>>> math.log10(100) # same as math.log(100, 10)
+2.0
+```
+
+---
+
 Существует несколько встроенных в язык типов для чисел, последовательностей, карт,
-
-Может быть произведено преобразование типов явное через вызов метода с именем в который происходит преобразование или не явное, при использовании оператора, который вызовет преобразование на объекте перед своим исполнением.
-
-Не явное преобразование происходит с укрупнением типа int -> float -> complex.
-
-#### int
-
-#### float
-
-#### complex
-
-#### Дополнительные числовые типы
-
-##### Fraction
-
-Доступен из пакета `fractions`.
-
-##### Decimal
-
-Доступен из пакета `decimals`.
 
 #### Арифметические операции
 
-##### abs
-
-##### divmod
-
-##### pow
-
-##### round
-
-##### math.trunc
-
-##### math.floor
-
-##### math.ceil
 
 #### bool
 
@@ -654,22 +749,41 @@ and, or, not ( & | ^ )
 [^7]: <https://peps.python.org/pep-0020/> "The Zen of Python"
 [^8]: <https://www.python.org/downloads/> "Регистр доступных версий Python"
 [^9]: <https://hub.docker.com/_/python> "Docker image for Python"
-[^10]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in Official documentation"
-[^11]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in Official documentation"
-[^12]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in Official documentation"
-[^13]: <https://docs.python.org/3/library/functions.html> "Built-in functions Official documentation"
-[^14]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in Official documentation"
-[^15]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in Official documentation"
-[^16]: <https://docs.python.org/3/reference/lexical_analysis.html#integer-literals> "Integer literals in Official documentation"
-[^17]: <https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals> "Floating point literals in Official documentation"
-[^18]: <https://docs.python.org/3/reference/lexical_analysis.html#imaginary-literals> "Imaginary literals in Official documentation"
+[^10]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in the official documentation"
+[^11]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in the official documentation"
+[^12]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in the official documentation"
+[^13]: <https://docs.python.org/3/library/functions.html> "Built-in functions in the official documentation"
+[^14]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in the official documentation"
+[^15]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in the official documentation"
+[^16]: <https://docs.python.org/3/reference/lexical_analysis.html#integer-literals> "Integer literals in the official documentation"
+[^17]: <https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals> "Floating point literals in the official documentation"
+[^18]: <https://docs.python.org/3/reference/lexical_analysis.html#imaginary-literals> "Imaginary literals in the official documentation"
 [^19]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
-[^20]: <https://docs.python.org/3/library/stdtypes.html#boolean-type-bool> "Boolean Type in Official documentation"
-[^21]: <https://docs.python.org/3/reference/datamodel.html#none> "None in Official documentation"
-[^22]: <https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex> "Arithmetic operators in Official documentation"
-[^23]: <https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types> "Bitwise operators in Official documentation"
-[^24]: <https://docs.python.org/3/library/stdtypes.html#comparisons> "Comparisons operators in Official documentation"
-[^25]: <https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not> "Logical operators in Official documentation"
-[^26]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
+[^20]: <https://docs.python.org/3/library/stdtypes.html#boolean-type-bool> "Boolean Type in the official documentation"
+[^21]: <https://docs.python.org/3/reference/datamodel.html#none> "None in the official documentation"
+[^22]: <https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex> "Arithmetic operators in the official documentation"
+[^23]: <https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types> "Bitwise operators in the official documentation"
+[^24]: <https://docs.python.org/3/library/stdtypes.html#comparisons> "Comparisons operators in the official documentation"
+[^25]: <https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not> "Logical operators in the official documentation"
+[^26]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in the official documentation"
 [^27]: <https://github.com/maxja/pythonic/blob/main/README.ru.md#help> "Конвенция именования в PEP 8 Style Guide for Python Code"
-[^28]: <https://docs.python.org/3/library/stdtypes.html#typebool>
+[^28]: <https://en.wikipedia.org/wiki/IEEE_754> "The IEEE Standard for Floating-Point Arithmetic (IEEE 754)"
+[^29]: <https://docs.python.org/3/tutorial/floatingpoint.html#floating-point-arithmetic-issues-and-limitations> "Floating Point Arithmetic: Issues and Limitations in the official documentation"
+[^30]: <https://docs.python.org/3/library/decimal.html#module-decimal> "Decimal fixed point and floating point arithmetic in the official documentation"
+[^31]: <https://docs.python.org/3/library/fractions.html#module-fractions> "Rational numbers in the official documentation"
+[^32]: <https://docs.python.org/3/library/math.html#module-math> "Mathematical functions in the official documentation"
+[^33]: <https://docs.python.org/3/library/functions.html#abs> "Take an absolute value from a given number in the official documentation"
+[^34]: <https://docs.python.org/3/library/functions.html#divmod> "Take a quotient and a remainder by given the dividend and the divisor in the official documentation"
+[^35]: <https://docs.python.org/3/library/functions.html#pow> "Take a power of a base in the official documentation"
+[^36]: <https://docs.python.org/3/library/math.html#math.pow> "Take a power of a base from math module in the official documentation"
+[^37]: <https://docs.python.org/3/library/functions.html#round> "Round a number with the given precision in the official documentation"
+[^38]: <https://docs.python.org/3/library/math.html#math.trunc> "Truncate a float to an integer in the official documentation"
+[^39]: <https://docs.python.org/3/library/math.html#math.floor> "Floor a float to an integer in the official documentation"
+[^40]: <https://docs.python.org/3/library/math.html#math.ceil> "Ceil a float to an integer in the official documentation"
+[^41]: <https://docs.python.org/3/library/math.html#math.sqrt> "Take a square root of a number in the official documentation"
+[^42]: <https://docs.python.org/3/library/math.html#math.cbrt> "Take a cube root of a number in the official documentation"
+[^43]: <https://docs.python.org/3/library/math.html#math.exp> "Take an e raised to the power of given number in the official documentation"
+[^44]: <https://docs.python.org/3/library/math.html#math.log> "Take the natural logarithm of given number to a given base or base of e if second argument not given"
+[^45]: <https://docs.python.org/3/library/math.html#math.log2> "Take logarithm of x base 2 in the official documentation"
+[^46]: <https://docs.python.org/3/library/math.html#math.log10> "Take logarithm of x base 10 in the official documentation"
+
