@@ -367,34 +367,51 @@ And this is a also so called
 
 | Оператор |       Строки        |    Числа     |     Булев     |
 |:---------|:--------------------|-------------:|--------------:|
-| _Арифметические операции_ |    |              |               |
+| _Арифметические операции[^22]_                             ||||
 |  L + R   |  'a' + 'b' = 'ab'   |  1 + 2 = 3   |   T + T = 2   |
 |  L - R   |            -        |  1 - 2 = -1  |   F - T = -1  |
 |  L * R   |    'a' * 3 = 'aaa'  | -1 * 2 = -2  |   T * T = 1   |
 |  L / R   |            -        |  1 / 2 = 0.5 |   F / T = 0.0 |
 |  L ** R  |            -        |  2 ** 2 = 4  |  T ** T = 1   |
 |  L // R  |            -        |  5 // 2 = 2  |  T // T = 1   |
-|  L % R   |            -        |  5 // 2 = 1  |   T % T = 0   |
-| _Побитовые операции_ |         |              |               |
+|  L % R   |            -        |   5 % 2 = 1  |   T % T = 0   |
+| _Побитовые операции[^23]_                                  ||||
 |  L ^ R   |            -        |   5 ^ 2 = 7  |   F ^ T = T   |
 |  L & R   |            -        |   5 & 2 = 0  |   F & T = F   |
 |  L \| R  |            -        |   5 | 2 = 7  |   F | T = T   |
 |  L << R  |            -        |  5 << 2 = 20 |  T << T = 2   |
 |  L >> R  |            -        |  5 >> 2 = 1  |  T >> T = 0   |
 |    ~R    |            -        |      ~2 = -3 |      ~T = -2  |
-| _Операции сравнения_ |         |              |               |
+| _Операции сравнения[^24]_                                  ||||
 |  L == R  | 'a' == 'b' = F      |  5 == 2 = F  |  F == T = F   |
 |  L != R  | 'a' != 'b' = T      |  5 != 2 = T  |  F != T = T   |
 |  L > R   |  'a' > 'b' = F      |   5 > 2 = T  |   F > T = F   |
 |  L >= R  | 'a' >= 'b' = F      |  5 >= 2 = T  |  F >= T = F   |
 |  L < R   |  'a' < 'b' = T      |   5 < 2 = F  |   F < T = T   |
 |  L <= R  | 'a' <= 'b' = T      |  5 <= 2 = F  |  F <= T = T   |
-| _Логические операции_ |        |              |               |
+| _Логические операции[^25]_                                 ||||
 |  L and R |'a' and 'b' = 'b'    | 5 and 2 = 2  | F and T = F   |
 |  L or R  | 'a' or 'b' = 'a'    |  5 or 2 = 5  |  F or T = T   |
 |   not R  |    not 'b' = F      |   not 2 = F  |   not T = F   |
-|  L is R  |            -        |         -    |  F is T = F   |
 
+Все приведённые операции доступны для чисел и булевых значений.
+В языке существует принцип не явного преобразования типов, и в некоторых
+случаях число приводится к булеву типу, а в некоторых булев тип к числу.
+Такие случаи можно идентифицировать по результату операции.
+
+Строковые литералы имеют два переопределённых арифметических оператора:
+`+`, — который конкатенирует строки и `*`, — который повторяет строку заданное
+правым операндом число раз. Другие арифметические операции для строк
+не определены.
+
+> [!NOTE]
+>
+> При сравнении булевых значений приоритет стоит отдавать логическим операторам,
+> против побитовых операторов.
+
+> [!NOTE]
+>
+> В языке существует возможность многократного сравнения: `1 <= 3 > 2 >= 0 = True`.
 
 ### Переменные
 
@@ -622,7 +639,10 @@ and, or, not ( & | ^ )
 [^19]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
 [^20]: <https://docs.python.org/3/library/stdtypes.html#boolean-type-bool> "Boolean Type in Official documentation"
 [^21]: <https://docs.python.org/3/reference/datamodel.html#none> "None in Official documentation"
-
-[^20]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
-[^21]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
-[^22]: <https://docs.python.org/3/library/stdtypes.html#typebool>
+[^22]: <https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex> "Arithmetic operators in Official documentation"
+[^23]: <https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types> "Bitwise operators in Official documentation"
+[^24]: <https://docs.python.org/3/library/stdtypes.html#comparisons> "Comparisons operators in Official documentation"
+[^25]: <https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not> "Logical operators in Official documentation"
+[^26]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in Official documentation"
+[^27]: <https://peps.python.org/pep-0008/> "PEP 8 Style Guide for Python Code"
+[^28]: <https://docs.python.org/3/library/stdtypes.html#typebool>
