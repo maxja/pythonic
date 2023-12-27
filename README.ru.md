@@ -695,7 +695,7 @@ False
 #### Ленивое вычисление
 
 При исполнении логических операций с булевыми значениями, происходит ленивое
-вычисление, — при котором второй операнд не проверяется, если первый удовлетворяет условиям оператора.
+вычисление[^47], — при котором второй операнд не проверяется, если первый удовлетворяет условиям оператора.
 
 ```python
 >>> True or False
@@ -842,4 +842,6 @@ False
 [^44]: <https://docs.python.org/3/library/math.html#math.log> "Take the natural logarithm of given number to a given base or base of e if second argument not given"
 [^45]: <https://docs.python.org/3/library/math.html#math.log2> "Take logarithm of x base 2 in the official documentation"
 [^46]: <https://docs.python.org/3/library/math.html#math.log10> "Take logarithm of x base 10 in the official documentation"
+[^47]: <https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BD%D0%B8%D0%B2%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F> "Ленивые вычисления на Wikipedia"
+
 
