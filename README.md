@@ -1,4 +1,4 @@
-Python learning playground [→ru](README.ru.md)
+Python learning journey [→ru](README.ru.md)
 ===
 
 This repository will document my learning journey with the Python language and its supporting tools.
