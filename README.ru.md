@@ -978,7 +978,7 @@ False
 
 > [!TIP]
 >
-> Приведение к строке, к числу, или к любому иному типу ограничено классом
+> Приведение к строки, к числу, или к любому иному типу ограничено классом
 > от которого наследован объект данного типа, и наличием у этого класса метода,
 > который будет вызван при попытке интерпретатора привести тип.
 >
@@ -990,12 +990,56 @@ False
 подсчитать количество повторений, развернуть строку и так далее.
 
 Класс строк расширяет функционал от работы с последовательностями следующими
-методами:
+методами[^55]:
 
-| Метод |
-|:------|
-sdsds
-
+| Метод класса строк            | Аргументы       | Результат                 |
+|:------------------------------|:----------------|:--------------------------|
+|||                                               s = 'schwarze Katze straße' |
+| Модификация                                                               |||
+| s.capitalize()                |                 | 'Schwarze katze straße'   |
+| s.title()                     |                 | 'Schwarze Katze Straße'   |
+| s.upper()                     |                 | 'SCHWARZE KATZE STRASSE'  |
+| s.lower()                     |                 | 'schwarze katze straße'   |
+| s.casefold()                  |                 | 'schwarze katze strasse'  |
+| s.removeprefix(prf)           |'schwarze '      | 'Katze straße'            |
+| s.removesuffix(sfx)           |' straße'        | 'Schwarze katze'          |
+| s.strip([chs])                |'s'              | 'chwarze Katze straße'    |
+| s.lstrip([chs])               |'s'              | 'chwarze Katze straße'    |
+| s.rstrip([chs])               |'e'              | 'schwarze Katze straß'    |
+| s.replace(old, new[, count]]) |'ß', 'ss'        | 'schwarze Katze strasse'  |
+| Декодирование                                                             |||
+| s.encode(enc, err)            |'ascii', 'ignore'| b'schwarze Katze strae'   |
+| Поиск                                                                     |||
+| s.find(ss[, s[, e]])          |'å'              | -1                        |
+| s.rfind(ss[, s[, e]])         |'ra'             | 17                        |
+| s.index(ss[, s[, e]])         |'å'              | ValueError                |
+| s.rindex(ss[, s[, e]])        |'ra'             | 17                        |
+| s.count(ss[, s[, e]])         |'a'              | 3                         |
+| Валидация                                                                 |||
+| s.startwith(sf[, s[, e]])     |'sch'            | True                      |
+| s.endwith(sf[, s[, e]])       |'sch'            | False                     |
+| s.isalnum()                   |                 | False                     |
+| s.isalpha()                   |                 | False                     |
+| s.isascii()                   |                 | False                     |
+| s.isnumeric()                 |                 | False                     |
+| s.isdecimal()                 |                 | False                     |
+| s.isdigit()                   |                 | False                     |
+| s.isidentifier()              |                 | False                     |
+| s.islower()                   |                 | False                     |
+| s.isupper()                   |                 | False                     |
+| Декомпозиция                                                              |||
+| s.partition(sep)              |' '        |('schwarze', ' ', 'Katze straße')|
+| s.rpartition(sep)             |' '        |('schwarze Katze', ' ', 'straße')|
+| s.split(sep, max)             |'a', 2     |['schw', 'rze K', 'tze straße']  |
+| s.rsplit(sep, max)            |'a', 2     |['schwarze K', 'tze str', 'ße']  |
+| Равнение                      ||                                  s = 'cat' |
+| s.center(w[, f])              |10, '*'          | '\*\*\*cat\*\*\*\*'       |
+| s.ljust(w[, f])               |10, '*'          | 'cat\*\*\*\*\*\*\*'       |
+| s.rjust(w[, f])               |10, '*'          | '\*\*\*\*\*\*\*cat'       |
+| Форматирование                ||                       s = '{} eats {food}' |
+| s.format(*a, **kw)            |'cat', food='tuna'| 'cat eats tuna'          |
+| Склейка строк                 ||                                    s = ';' |
+| s.join(iter)                  | ['one', 'two']  | 'one;two'                 |
 
 ---
 
@@ -1092,33 +1136,33 @@ sdsds
 [^24]: <https://docs.python.org/3/library/stdtypes.html#comparisons> "Comparisons operators in the official documentation"
 [^25]: <https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not> "Logical operators in the official documentation"
 [^26]: <https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting> ""
-[^26]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in the official documentation"
-[^27]: <https://github.com/maxja/pythonic/blob/main/README.ru.md#help> "Конвенция именования в PEP 8 Style Guide for Python Code"
-[^28]: <https://en.wikipedia.org/wiki/IEEE_754> "The IEEE Standard for Floating-Point Arithmetic (IEEE 754)"
-[^29]: <https://docs.python.org/3/tutorial/floatingpoint.html#floating-point-arithmetic-issues-and-limitations> "Floating Point Arithmetic: Issues and Limitations in the official documentation"
-[^30]: <https://docs.python.org/3/library/decimal.html#module-decimal> "Decimal fixed point and floating point arithmetic in the official documentation"
-[^31]: <https://docs.python.org/3/library/fractions.html#module-fractions> "Rational numbers in the official documentation"
-[^32]: <https://docs.python.org/3/library/math.html#module-math> "Mathematical functions in the official documentation"
-[^33]: <https://docs.python.org/3/library/functions.html#abs> "Take an absolute value from a given number in the official documentation"
-[^34]: <https://docs.python.org/3/library/functions.html#divmod> "Take a quotient and a remainder by given the dividend and the divisor in the official documentation"
-[^35]: <https://docs.python.org/3/library/functions.html#pow> "Take a power of a base in the official documentation"
-[^36]: <https://docs.python.org/3/library/math.html#math.pow> "Take a power of a base from math module in the official documentation"
-[^37]: <https://docs.python.org/3/library/functions.html#round> "Round a number with the given precision in the official documentation"
-[^38]: <https://docs.python.org/3/library/math.html#math.trunc> "Truncate a float to an integer in the official documentation"
-[^39]: <https://docs.python.org/3/library/math.html#math.floor> "Floor a float to an integer in the official documentation"
-[^40]: <https://docs.python.org/3/library/math.html#math.ceil> "Ceil a float to an integer in the official documentation"
-[^41]: <https://docs.python.org/3/library/math.html#math.sqrt> "Take a square root of a number in the official documentation"
-[^42]: <https://docs.python.org/3/library/math.html#math.cbrt> "Take a cube root of a number in the official documentation"
-[^43]: <https://docs.python.org/3/library/math.html#math.exp> "Take an e raised to the power of given number in the official documentation"
-[^44]: <https://docs.python.org/3/library/math.html#math.log> "Take the natural logarithm of given number to a given base or base of e if second argument not given"
-[^45]: <https://docs.python.org/3/library/math.html#math.log2> "Take logarithm of x base 2 in the official documentation"
-[^46]: <https://docs.python.org/3/library/math.html#math.log10> "Take logarithm of x base 10 in the official documentation"
-[^47]: <https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BD%D0%B8%D0%B2%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F> "Ленивые вычисления на Wikipedia"
-[^48]: <https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9_%D1%82%D0%B8%D0%BF> "Строковый тип на Wikipedia"
-[^49]: <https://docs.python.org/3/library/functions.html#func-bytes> "bytes function in the official documentation"
-[^50]: <https://docs.python.org/3/library/functions.html#func-bytearray> "bytearray function in the official documentation"
-[^51]: <https://docs.python.org/3/library/stdtypes.html#str> "Builtin str cast method in the official documentation"
-[^52]: <https://docs.python.org/3/library/functions.html#format> "Builtin format method in the official documentation"
-[^53]: <https://docs.python.org/3/reference/lexical_analysis.html#f-strings> "F-string literals in the official documentation"
-[^54]: <https://docs.python.org/3/library/functions.html#len> "Builtin len method in the official documentation"
+[^27]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in the official documentation"
+[^28]: <https://github.com/maxja/pythonic/blob/main/README.ru.md#help> "Конвенция именования в PEP 8 Style Guide for Python Code"
+[^29]: <https://en.wikipedia.org/wiki/IEEE_754> "The IEEE Standard for Floating-Point Arithmetic (IEEE 754)"
+[^30]: <https://docs.python.org/3/tutorial/floatingpoint.html#floating-point-arithmetic-issues-and-limitations> "Floating Point Arithmetic: Issues and Limitations in the official documentation"
+[^31]: <https://docs.python.org/3/library/decimal.html#module-decimal> "Decimal fixed point and floating point arithmetic in the official documentation"
+[^32]: <https://docs.python.org/3/library/fractions.html#module-fractions> "Rational numbers in the official documentation"
+[^33]: <https://docs.python.org/3/library/math.html#module-math> "Mathematical functions in the official documentation"
+[^34]: <https://docs.python.org/3/library/functions.html#abs> "Take an absolute value from a given number in the official documentation"
+[^35]: <https://docs.python.org/3/library/functions.html#divmod> "Take a quotient and a remainder by given the dividend and the divisor in the official documentation"
+[^36]: <https://docs.python.org/3/library/functions.html#pow> "Take a power of a base in the official documentation"
+[^37]: <https://docs.python.org/3/library/math.html#math.pow> "Take a power of a base from math module in the official documentation"
+[^38]: <https://docs.python.org/3/library/functions.html#round> "Round a number with the given precision in the official documentation"
+[^39]: <https://docs.python.org/3/library/math.html#math.trunc> "Truncate a float to an integer in the official documentation"
+[^40]: <https://docs.python.org/3/library/math.html#math.floor> "Floor a float to an integer in the official documentation"
+[^41]: <https://docs.python.org/3/library/math.html#math.ceil> "Ceil a float to an integer in the official documentation"
+[^42]: <https://docs.python.org/3/library/math.html#math.sqrt> "Take a square root of a number in the official documentation"
+[^43]: <https://docs.python.org/3/library/math.html#math.cbrt> "Take a cube root of a number in the official documentation"
+[^44]: <https://docs.python.org/3/library/math.html#math.exp> "Take an e raised to the power of given number in the official documentation"
+[^45]: <https://docs.python.org/3/library/math.html#math.log> "Take the natural logarithm of given number to a given base or base of e if second argument not given"
+[^46]: <https://docs.python.org/3/library/math.html#math.log2> "Take logarithm of x base 2 in the official documentation"
+[^47]: <https://docs.python.org/3/library/math.html#math.log10> "Take logarithm of x base 10 in the official documentation"
+[^48]: <https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BD%D0%B8%D0%B2%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F> "Ленивые вычисления на Wikipedia"
+[^49]: <https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9_%D1%82%D0%B8%D0%BF> "Строковый тип на Wikipedia"
+[^50]: <https://docs.python.org/3/library/functions.html#func-bytes> "bytes function in the official documentation"
+[^51]: <https://docs.python.org/3/library/functions.html#func-bytearray> "bytearray function in the official documentation"
+[^52]: <https://docs.python.org/3/library/stdtypes.html#str> "Builtin str cast method in the official documentation"
+[^53]: <https://docs.python.org/3/library/functions.html#format> "Builtin format method in the official documentation"
+[^54]: <https://docs.python.org/3/reference/lexical_analysis.html#f-strings> "F-string literals in the official documentation"
+[^55]: <https://docs.python.org/3/library/string.html> ""
 
