@@ -71,8 +71,8 @@ gantt
 
 ## О Языке
 
-Python[^3] — высокоуровневый, универсальный, интерпретируемый язык со сборщиком
-мусора и динамической типизацией[^4]. Язык был разработан Гвидо ван Россумом
+Python[^1] — высокоуровневый, универсальный, интерпретируемый язык со сборщиком
+мусора и динамической типизацией[^2]. Язык был разработан Гвидо ван Россумом
 в 1991 году.
 
 Язык приобрел популярность к моменту выхода второй версии. Текущая версия —
@@ -98,9 +98,9 @@ Python[^3] — высокоуровневый, универсальный, ин�
 ### Развитие языка
 
 Python, несмотря на свой возраст, продолжает активно развиваться под
-руководством сообщества и комитетов при фонде[^5].
+руководством сообщества и комитетов при фонде[^3].
 
-Развитие языка осуществляется через систему оценки предложений PEP[^6],
+Развитие языка осуществляется через систему оценки предложений PEP[^4],
 из которых формируется описание языка.
 
 Язык обладает лозунгом, который определяет направление его развития.
@@ -109,7 +109,7 @@ Python, несмотря на свой возраст, продолжает ак
 
 Существует краткий и лаконичный способ описать принципы, которыми
 руководствуются разработчики Python. Эти принципы известны как "Zen of Python"
-и имеют свой собственный PEP 20[^7].
+и имеют свой собственный PEP 20[^5].
 
 > Красивое лучше, чем уродливое. <br />
 > Явное лучше, чем неявное. <br />
@@ -163,8 +163,8 @@ Python, несмотря на свой возраст, продолжает ак
 в качестве аргумента вызова Python.
 При указании директории интерпретатор ищет точку входа в файле `__main__.py`.
 
-Запуск Python возможен как на локальной машине после установки[^8], так и в
-контейнеризированных средах[^9].
+Запуск Python возможен как на локальной машине после установки[^6], так и в
+контейнеризированных средах[^7].
 
 Для удобства запуска простых сценариев можно воспользоваться онлайн-сервисами,
 такими как [Python Anywhere](https://www.pythonanywhere.com/),
@@ -219,7 +219,7 @@ Python, несмотря на свой возраст, продолжает ак
 
 ### input
 
-В контексте ввода данных в Python существует функция input[^10].
+В контексте ввода данных в Python существует функция input[^8].
 Подобно функции `print`, `input` является глобально доступной.
 
 Функция `input` позволяет переключить выполнение программы
@@ -236,14 +236,14 @@ Say my name: Mr. White
 ### dir
 
 Функция `dir` возвращает список имен, доступных в заданной области
-видимости[^11].
+видимости[^9].
 Если вызывается без аргументов, то будет выбрана текущая область видимости.
 Если в функцию передается объект, то `dir` возвращает список его методов
 и атрибутов.
 
 ### help
 
-Встроенная функция `help`[^12] представляет собой мощный инструмент,
+Встроенная функция `help`[^10] представляет собой мощный инструмент,
 особенно в режиме REPL.
 Без аргументов вызов функции инициирует интерактивную консоль поиска
 по индексу документации.
@@ -256,7 +256,7 @@ Say my name: Mr. White
 > Не буду подробно останавливаться на всех встроенных функциях.
 > Однако, стоит отметить их важность и многообразие.
 > Для подробного описания каждой функции можно обратиться к официальной
-> документации[^13].
+> документации[^11].
 
 > [!TIP]
 >
@@ -291,12 +291,12 @@ NAME
 
 ## Литералы, Булевы значения и None
 
-Литералами являются значимые комбинации символов, которые могут быть
-строками[^14] или числами[^15].
+Литералами[^12] являются значимые комбинации символов, которые могут быть
+строками[^13] или числами[^14].
 
 ### Строки
 
-Строковые литералы[^14] в Python выделяются наличием кавычек с обеих сторон.
+Строковые литералы[^13] в Python выделяются наличием кавычек с обеих сторон.
 Кавычки могут быть одинарными (`'`), двойными (`"`) и серией одинарных (`'''`)
 или двойных (`"""`) кавычек.
 
@@ -355,7 +355,7 @@ And this is a also so-called
 
 ### Числа
 
-Числовые литералы[^15] представляют собой набор символов, состоящих
+Числовые литералы[^14] представляют собой набор символов, состоящих
 из знака принадлежности числа к подмножеству положительных или отрицательных
 вещественных чисел (`+`, `-`), указателя формата числа (`0b` — двоичный,
 `0o` — восьмеричный, `0x` — шестнадцатеричный), цифр `0,1` для двоичных,
@@ -390,8 +390,8 @@ And this is a also so-called
 0.2023e4
 306_849.0e-6
 ```
-В дополнение к целым числам[^16] и числам с плавающей точкой[^17],
-существует также запись литерала мнимого числа[^18].
+В дополнение к целым числам[^15] и числам с плавающей точкой[^16],
+существует также запись литерала мнимого числа[^17].
 
 ```python
 # imaginary
@@ -399,25 +399,25 @@ And this is a also so-called
 1e100j
 ```
 
-С введением PEP 515[^19] появилась возможность визуального разделения разрядов
+С введением PEP 515[^18] появилась возможность визуального разделения разрядов
 символом нижнего подчеркивания `_`.
 
 ### Булевы значения<a name="boolean"></a>
 
-Булевы значения, описывающие логическое состояние[^20], предопределены
+Булевы значения, описывающие логическое состояние[^19], предопределены
 и имеют фиксированную форму записи: `True` и `False`.
 
 ### None
 
 `None` - это зарезервированное слово, которое выражает отсутствие
-значения[^21] и имеет фиксированную форму записи.
+значения[^20] и имеет фиксированную форму записи.
 
 ## Операторы<a name="opertors"></a>
 
 Для выполнения операций над числами, строками и булевыми значениями
 используются различные операторы.
 
-### Арифметические операции[^22]
+### Арифметические операции[^21]
 
 | | Оператор |       Строки        |    Числа     |     Булев     |
 |-|:---------|:--------------------|-------------:|--------------:|
@@ -429,7 +429,7 @@ And this is a also so-called
 | |  L // R  |            -        |  5 // 2 = 2  |  T // T = 1   |
 |1|  L % R   | '%s' % 100 = '100'  |   5 % 2 = 1  |   T % T = 0   |
 
-### Побитовые операции[^23]
+### Побитовые операции[^22]
 
 | | Оператор |       Строки        |    Числа     |     Булев     |
 |-|:---------|:--------------------|-------------:|--------------:|
@@ -440,7 +440,7 @@ And this is a also so-called
 | |  L >> R  |            -        |  5 >> 2 = 1  |  T >> T = 0   |
 | |    ~R    |            -        |      ~2 = -3 |      ~T = -2  |
 
-### Операции сравнения[^24]
+### Операции сравнения[^23]
 
 | | Оператор |       Строки        |    Числа     |     Булев     |
 |-|:---------|:--------------------|-------------:|--------------:|
@@ -451,7 +451,7 @@ And this is a also so-called
 | |  L < R   |  'a' < 'b' = T      |   5 < 2 = F  |   F < T = T   |
 | |  L <= R  | 'a' <= 'b' = T      |  5 <= 2 = F  |  F <= T = T   |
 
-### Логические операции[^25]
+### Логические операции[^24]
 
 | | Оператор |       Строки        |    Числа     |     Булев     |
 |-|:---------|:--------------------|-------------:|--------------:|
@@ -475,7 +475,8 @@ And this is a also so-called
 `1` — Строковые литералы имеют 3 специально переопределённых арифметических
 оператора: `+`, который конкатенирует строки, `*`, который повторяет строку
 заданное число раз, а `%` форматирует строку, в которой использован
-форматирующий признак[^26]. Другие арифметические операции для строк не определены.
+форматирующий признак[^25]. Другие арифметические операции для строк
+не определены.
 
 > [!TIP]
 >
@@ -490,7 +491,7 @@ And this is a also so-called
 ## Переменные
 
 Для ссылки на исходные или промежуточные значения используются переменные.
-Как отмечает Мэтт Харрисон[^2], переменные можно воспринимать как метки
+Как отмечает Мэтт Харрисон, переменные можно воспринимать как метки
 указывающие на значения, которые можно переиспользовать снова и снова.
 
 ```python
@@ -504,7 +505,7 @@ year = 1982
 из букв латинского алфавита, цифр и символа нижнего подчёркивания.
 При этом переменная не может начинаться с цифры.
 
-Кроме того, в языке есть список зарезервированных слов[^27],
+Кроме того, в языке есть список зарезервированных слов[^26],
 которые интерпретатор не даст использовать в качестве имён переменных.
 
 > [!TIP]
@@ -527,7 +528,7 @@ year = 1982
 указывают.
 
 Кроме того, стоит отметить, что документация языка предлагает конкретный формат
-переменных[^28]: `snake_case`, — когда имена даются строчными буквами,
+переменных[^27]: `snake_case`, — когда имена даются строчными буквами,
 а если имя состоит из нескольких частей, то части соединяются символом
 нижнего подчёркивания.
 
@@ -660,7 +661,7 @@ current_book: str
 [операторами из списка](#opertors), что позволяет переопределять значение
 для переменной слева.
 
-#### Арифметические операции[^22]
+#### Арифметические операции[^21]
 
 | Оператор   |       Числа        |
 |:-----------|-------------------:|
@@ -673,7 +674,7 @@ current_book: str
 |  L //= R   | x //= 2  # x = 3.0 |
 |   L %= R   |  x %= 2  # x = 1.0 |
 
-#### Побитовые операции[^23]
+#### Побитовые операции[^22]
 
 | Оператор   |       Числа        |
 |:-----------|-------------------:|
@@ -728,11 +729,11 @@ current_book: str
 #### Проблема чисел с плавающей точкой
 
 Для всех реализаций арифметики чисел с плавающей точкой выполненных
-по стандарту IEEE 754[^29] существует проблема точности.
+по стандарту IEEE 754[^28] существует проблема точности.
 
 Числа с плавающей точкой в Python реализуются с использованием стандарта
 IEEE 754. Некоторые проблемы, характерные для этого стандарта, также могут
-проявляться в Python[^30].
+проявляться в Python[^29].
 
 ```python
 >>> 0.1 + 0.1 + 0.1 == 0.3
@@ -756,7 +757,7 @@ True
 ```
 
 3. Использование специализированных типов данных с сохранением точности,
-  таких как Decimal[^31] и Fraction[^32]:
+  таких как Decimal[^30] и Fraction[^31]:
 
 ```python
 >>> import decimal
@@ -802,12 +803,11 @@ True
 #### Вспомогательные числовые методы
 
 Помимо [арифметических операций](#opertors) язык предлагает набор встроенных
-методов[^13] и вспомогательных функций[^33] из модуля `math`.
+методов[^11] и вспомогательных функций[^32] из модуля `math`.
 
-Вот часть из них: `abs`[^34], `divmod`[^35], `pow`[^36], `math.pow`[^37],
-`round`[^38], `math.trunc`[^39], `math.floor`[^40], `math.ceil`[^41],
-`math.sqrt`[^42], `math.cbrt`[^43], `math.exp`[^44], `math.log`[^45],
-`math.log2`[^46], `math.log10`[^47].
+Вот часть из них: `abs`, `divmod`, `pow`, `math.pow`, `round`, `math.trunc`,
+`math.floor`, `math.ceil`, `math.sqrt`, `math.cbrt`, `math.exp`, `math.log`,
+`math.log2`, `math.log10`.
 
 ```python
 >>> abs(-0.345)
@@ -903,7 +903,7 @@ False
 #### Ленивое вычисление
 
 При выполнении логических операций с булевыми значениями происходит ленивое
-вычисление[^48], при котором второй операнд не проверяется, если первый
+вычисление[^33], при котором второй операнд не проверяется, если первый
 удовлетворяет условию оператора.
 
 ```python
@@ -994,7 +994,7 @@ False
 |1|s.index(x,i,j) | Начальный индекс элем./серии из последовательности с окном|
 |1|s.count(x)     | Количество вхождений элемента/серии в последовательность  |
 
-`*` — для `min`[^49] и `max`[^50] дан упрощенный вариант дескриптора методов.
+`*` — для `min` и `max` дан упрощенный вариант дескриптора методов.
 
 `1` — методы `reversed`, `.index` и `.count` не определёны для множеств, так
   как у множеств нет порядка следования элементов.
@@ -1004,7 +1004,7 @@ False
 Как можно было догадаться из примера выше, строки — частный случай
 последовательности.
 
-Строки представляют собой последовательность символов[^49], каждый из которых
+Строки представляют собой последовательность символов[^34], каждый из которых
 является представлением байта.
 
 ```python
@@ -1014,7 +1014,7 @@ False
 ```
 
 Для просмотра строки в виде серии байтов, можно воспользоваться встроенными
-методами `bytes`[^50] или `bytearray`[^51], вызвав метод `.hex` с указанием
+методами `bytes`[^35] или `bytearray`[^36], вызвав метод `.hex` с указанием
 символа разделителя в качестве аргумента.
 
 ```python
@@ -1057,8 +1057,8 @@ False
 > будет привести значение, чтобы выполнить арифметическое действие
 > или провести сравнение с эталоном.
 
-К строкам можно привести значения других типов, используя метод str[^52],
-функцию форматирования format[^53], или форматированные строки[^26] и [^54].
+К строкам можно привести значения других типов, используя метод str[^37],
+функцию форматирования format[^38], или форматированные строки[^25] и [^39].
 
 ```python
 >>> str(41) # str(0b101001) str(0o51) str(0x29)
@@ -1100,7 +1100,7 @@ False
 подсчитать количество повторений, развернуть строку и так далее.
 
 Класс строк расширяет функционал от работы с последовательностями следующими
-методами[^55]:
+методами[^40]:
 
 | Метод класса строк            | Аргументы       | Результат                 |
 |:------------------------------|:----------------|:--------------------------|
@@ -1153,7 +1153,7 @@ False
 
 #### Кортежи
 
-Кортеж[^56] представляет собой неизменяемую последовательность элементов.
+Кортеж[^41] представляет собой неизменяемую последовательность элементов.
 
 ```python
 >>> t1 = (1, 'one', b'uno')
@@ -1170,7 +1170,7 @@ False
 (1, 'one', b'uno')
 ```
 
-Последний вариант с вызовом именного метода[^57] — это способ привести любой
+Последний вариант с вызовом именного метода[^42] — это способ привести любой
 перечисляемый тип к кортежу.
 
 Кортежи используются для передачи данных между различными частями кода и могут
@@ -1209,7 +1209,7 @@ TypeError: 'tuple' object does not support item assignment
 
 #### Списки
 
-Список[^58] является наиболее распространенным типом для представления
+Список[^43] является наиболее распространенным типом для представления
 перечислений. Похожий на кортеж, он также может хранить элементы различных
 типов. Однако, в отличие от кортежа, список относится к изменяемым типам.
 Это означает, что его элементы можно удалять, добавлять, заменять
@@ -1225,7 +1225,7 @@ TypeError: 'tuple' object does not support item assignment
 [1, 'one', b'uno']
 ```
 
-Последний вариант с вызовом именного метода[^59] представляет собой способ
+Последний вариант с вызовом именного метода[^44] представляет собой способ
 привести любой перечисляемый тип к списку.
 
 > [!TIP]
@@ -1292,7 +1292,7 @@ TypeError: 'tuple' object does not support item assignment
 
 #### Множества
 
-Основное, что нужно знать о множествах[^60], заключается в том, что они хранят
+Основное, что нужно знать о множествах[^45], заключается в том, что они хранят
 уникальные элементы в неопределенном порядке!
 
 ```python
@@ -1363,7 +1363,7 @@ TypeError: 'tuple' object does not support item assignment
 схожий: для каждого ключа существует связанное с ним значение.
 Ключи — это список неизменяемых хешируемых значений.
 
-Словари обеспечивают быстрый доступ по ключу `O(1)`. В противном случае поиск
+Словари[^47] обеспечивают быстрый доступ по ключу `O(1)`. В противном случае поиск
 значения происходит через перебор `O(n)`.
 
 > [!NOTE]
@@ -1439,7 +1439,7 @@ TypeError: 'tuple' object does not support item assignment
 [1, 3, 5, 7, 9]
 ```
 
-Диапазон представляет собой последовательность целых чисел и становится
+Диапазон[^48] представляет собой последовательность целых чисел и становится
 фактической последовательностью только в момент запроса на распаковку.
 
 В сочетании с другими структурами и методом последовательностей `zip`,
@@ -1489,7 +1489,7 @@ TypeError: 'tuple' object does not support item assignment
 >
 > `Windows_NT MaxWinITX 10.0 22621 x86_64 MS/Windows (Windows 11)`
 
-Но принцип формирования строки остаётся неизменным[^62]:
+Но принцип формирования строки остаётся неизменным[^49]:
 
 > "\<sysname\> \<nodename\> \<release\> \<version\> \<machine\>\n"
 
@@ -1664,67 +1664,52 @@ print(
 ```
 </details>
 
----
-
-[^1]: <https://www.livelib.ru/book/1005972301-osnovy-python-nauchites-dumat-kak-programmist-allen-b-dauni> "Основы Python. Научитесь думать как программист, 2-е издание. Автор: Аллен Б. Дауни"
-[^2]: <https://www.livelib.ru/book/1002933611-kak-ustroen-python-gid-dlya-razrabotchikov-programmistov-i-interesuyuschihsya-mett-harrison> "Как устроен Python. Гид для разработчиков, программистов и интересующихся. Автор: Мэтт Харрисон"
-[^3]: <https://www.python.org/> "Официальный сайт"
-[^4]: <https://ru.wikipedia.org/wiki/Python> "Страница о языке Python на Wikipedia"
-[^5]: <https://legacy.python.org/psf/committees/> "Раздел о комитетах фонда Python Software Foundation"
-[^6]: <https://peps.python.org/pep-0000/> "Index of Python Enhancement Proposals"
-[^7]: <https://peps.python.org/pep-0020/> "The Zen of Python"
-[^8]: <https://www.python.org/downloads/> "Регистр доступных версий Python"
-[^9]: <https://hub.docker.com/_/python> "Docker image for Python"
-[^10]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "input in the official documentation"
-[^11]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "dir in the official documentation"
-[^12]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "help in the official documentation"
-[^13]: <https://docs.python.org/3/library/functions.html> "Built-in functions in the official documentation"
-[^14]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals in the official documentation"
-[^15]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals in the official documentation"
-[^16]: <https://docs.python.org/3/reference/lexical_analysis.html#integer-literals> "Integer literals in the official documentation"
-[^17]: <https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals> "Floating point literals in the official documentation"
-[^18]: <https://docs.python.org/3/reference/lexical_analysis.html#imaginary-literals> "Imaginary literals in the official documentation"
-[^19]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals"
-[^20]: <https://docs.python.org/3/library/stdtypes.html#boolean-type-bool> "Boolean Type in the official documentation"
-[^21]: <https://docs.python.org/3/reference/datamodel.html#none> "None in the official documentation"
-[^22]: <https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex> "Arithmetic operators in the official documentation"
-[^23]: <https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types> "Bitwise operators in the official documentation"
-[^24]: <https://docs.python.org/3/library/stdtypes.html#comparisons> "Comparisons operators in the official documentation"
-[^25]: <https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not> "Logical operators in the official documentation"
-[^26]: <https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting> ""
-[^27]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords in the official documentation"
-[^28]: <https://github.com/maxja/pythonic/blob/main/README.ru.md#help> "Конвенция именования в PEP 8 Style Guide for Python Code"
-[^29]: <https://en.wikipedia.org/wiki/IEEE_754> "The IEEE Standard for Floating-Point Arithmetic (IEEE 754)"
-[^30]: <https://docs.python.org/3/tutorial/floatingpoint.html#floating-point-arithmetic-issues-and-limitations> "Floating Point Arithmetic: Issues and Limitations in the official documentation"
-[^31]: <https://docs.python.org/3/library/decimal.html#module-decimal> "Decimal fixed point and floating point arithmetic in the official documentation"
-[^32]: <https://docs.python.org/3/library/fractions.html#module-fractions> "Rational numbers in the official documentation"
-[^33]: <https://docs.python.org/3/library/math.html#module-math> "Mathematical functions in the official documentation"
-[^34]: <https://docs.python.org/3/library/functions.html#abs> "Take an absolute value from a given number in the official documentation"
-[^35]: <https://docs.python.org/3/library/functions.html#divmod> "Take a quotient and a remainder by given the dividend and the divisor in the official documentation"
-[^36]: <https://docs.python.org/3/library/functions.html#pow> "Take a power of a base in the official documentation"
-[^37]: <https://docs.python.org/3/library/math.html#math.pow> "Take a power of a base from math module in the official documentation"
-[^38]: <https://docs.python.org/3/library/functions.html#round> "Round a number with the given precision in the official documentation"
-[^39]: <https://docs.python.org/3/library/math.html#math.trunc> "Truncate a float to an integer in the official documentation"
-[^40]: <https://docs.python.org/3/library/math.html#math.floor> "Floor a float to an integer in the official documentation"
-[^41]: <https://docs.python.org/3/library/math.html#math.ceil> "Ceil a float to an integer in the official documentation"
-[^42]: <https://docs.python.org/3/library/math.html#math.sqrt> "Take a square root of a number in the official documentation"
-[^43]: <https://docs.python.org/3/library/math.html#math.cbrt> "Take a cube root of a number in the official documentation"
-[^44]: <https://docs.python.org/3/library/math.html#math.exp> "Take an e raised to the power of given number in the official documentation"
-[^45]: <https://docs.python.org/3/library/math.html#math.log> "Take the natural logarithm of given number to a given base or base of e if second argument not given"
-[^46]: <https://docs.python.org/3/library/math.html#math.log2> "Take logarithm of x base 2 in the official documentation"
-[^47]: <https://docs.python.org/3/library/math.html#math.log10> "Take logarithm of x base 10 in the official documentation"
-[^48]: <https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BD%D0%B8%D0%B2%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F> "Ленивые вычисления на Wikipedia"
-[^49]: <https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9_%D1%82%D0%B8%D0%BF> "Строковый тип на Wikipedia"
-[^50]: <https://docs.python.org/3/library/functions.html#func-bytes> "bytes function in the official documentation"
-[^51]: <https://docs.python.org/3/library/functions.html#func-bytearray> "bytearray function in the official documentation"
-[^52]: <https://docs.python.org/3/library/stdtypes.html#str> "Builtin str cast method in the official documentation"
-[^53]: <https://docs.python.org/3/library/functions.html#format> "Builtin format method in the official documentation"
-[^54]: <https://docs.python.org/3/reference/lexical_analysis.html#f-strings> "F-string literals in the official documentation"
-[^55]: <https://docs.python.org/3/library/string.html> ""
-[^56]: <https://docs.python.org/3/library/stdtypes.html#tuples> ""
-[^57]: <https://docs.python.org/3/library/stdtypes.html#tuple> ""
-[^58]: <https://docs.python.org/3/library/stdtypes.html#lists> ""
-[^59]: <https://docs.python.org/3/library/functions.html#func-list> ""
-[^60]: <https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset> ""
-[^61]: <https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BE%D1%80%D0%B8%D1%8F_%D0%BC%D0%BD%D0%BE%D0%B6%D0%B5%D1%81%D1%82%D0%B2> ""
-[^62]: <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/uname.html> ""
+[^1]: <https://www.python.org/> "Python official site"
+[^2]: <https://ru.wikipedia.org/wiki/Python> "Wiki cтраница о Python"
+[^3]: <https://legacy.python.org/psf/committees/> "Python Software Foundation"
+[^4]: <https://peps.python.org/pep-0000/> "Python Enhancement Proposals"
+[^5]: <https://peps.python.org/pep-0020/> "The Zen of Python"
+[^6]: <https://www.python.org/downloads/> "Python download page"
+[^7]: <https://hub.docker.com/_/python> "Docker image for Python"
+[^8]: <https://docs.python.org/3/library/functions.html?highlight=input#input> "Input function, Python documentation"
+[^9]: <https://docs.python.org/3/library/functions.html?highlight=dir#dir> "Dir function, Python documentation"
+[^10]: <https://docs.python.org/3/library/functions.html?highlight=help#help> "Help function, Python documentation"
+[^11]: <https://docs.python.org/3/library/functions.html> "Built-in functions, Python documentation"
+[^12]: <https://docs.python.org/3/reference/lexical_analysis.html#literals> "Literals, Python documentation"
+[^13]: <https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals> "String literals, Python documentation"
+[^14]: <https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals> "Numeric literals, Python documentation"
+[^15]: <https://docs.python.org/3/reference/lexical_analysis.html#integer-literals> "Integer literals, Python documentation"
+[^16]: <https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals> "Floating point number literals, Python documentation"
+[^17]: <https://docs.python.org/3/reference/lexical_analysis.html#imaginary-literals> "Imaginary number literals, Python documentation"
+[^18]: <https://peps.python.org/pep-0515/> "PEP 515 – Underscores in Numeric Literals, Python documentation"
+[^19]: <https://docs.python.org/3/library/stdtypes.html#boolean-type-bool> "Boolean Type, Python documentation"
+[^20]: <https://docs.python.org/3/reference/datamodel.html#none> "None, Python documentation"
+[^21]: <https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex> "Arithmetic operators, Python documentation"
+[^22]: <https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types> "Bitwise operators, Python documentation"
+[^23]: <https://docs.python.org/3/library/stdtypes.html#comparisons> "Comparisons operators, Python documentation"
+[^24]: <https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not> "Logical operators, Python documentation"
+[^25]: <https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting> "String formatting, Python documentation"
+[^26]: <https://docs.python.org/3/reference/lexical_analysis.html#keywords> "Reserved keywords, Python documentation"
+[^27]: <https://peps.python.org/pep-0008/#naming-conventions> "PEP 008 — Naming Conventions, Python documentation"
+[^28]: <https://ru.wikipedia.org/wiki/IEEE_754> "Wiki страница о формате представления чисел с плавающей точкой IEEE 754"
+[^29]: <https://docs.python.org/3/tutorial/floatingpoint.html#floating-point-arithmetic-issues-and-limitations> "Floating Point Arithmetic: Issues and Limitations, Python documentation"
+[^30]: <https://docs.python.org/3/library/decimal.html#module-decimal> "Decimal fixed point and floating point arithmetic, Python documentation"
+[^31]: <https://docs.python.org/3/library/fractions.html#module-fractions> "Rational numbers, Python documentation"
+[^32]: <https://docs.python.org/3/library/math.html#module-math> "Mathematical functions, Python documentation"
+[^33]: <https://ru.wikipedia.org/wiki/Ленивые_вычисления> "Wiki страница о Ленивых вычислениях"
+[^34]: <https://ru.wikipedia.org/wiki/Строковый_тип> "Wiki страница о Строковом типе"
+[^35]: <https://docs.python.org/3/library/functions.html#func-bytes> "Bytes function, Python documentation"
+[^36]: <https://docs.python.org/3/library/functions.html#func-bytearray> "Bytearray function, Python documentation"
+[^37]: <https://docs.python.org/3/library/stdtypes.html#str> "Builtin str function, Python documentation"
+[^38]: <https://docs.python.org/3/library/functions.html#format> "Format method of str type, Python documentation"
+[^39]: <https://docs.python.org/3/reference/lexical_analysis.html#f-strings> "F-string literals, Python documentation"
+[^40]: <https://docs.python.org/3/library/string.html> "Methods of str type, Python documentation"
+[^41]: <https://docs.python.org/3/library/stdtypes.html#tuples> "Tuple type, Python documentation"
+[^42]: <https://docs.python.org/3/library/stdtypes.html#tuple> "Builtin function tuple, Python documentation"
+[^43]: <https://docs.python.org/3/library/stdtypes.html#lists> "List type, Python documentation"
+[^44]: <https://docs.python.org/3/library/functions.html#func-list> "Builtin function list, Python documentation"
+[^45]: <https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset> "Set type, Python documentation"
+[^46]: <https://ru.wikipedia.org/wiki/Теория_множеств> "Wiki страница о Теории множеств"
+[^47]: <https://docs.python.org/3/library/stdtypes.html#mapping-types-dict> "Dict type, Python documentation"
+[^48]: <https://docs.python.org/3/library/stdtypes.html#ranges> "Ranges, Python documentation"
+[^49]: <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/uname.html> "Specification on uname command"
