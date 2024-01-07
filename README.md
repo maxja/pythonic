@@ -680,6 +680,608 @@ allowing the reassignment of the value for the variable on the left.
 |  L <<= R   |  x <<= 2 # x = 24  |
 |  L >>= R   |  x >>= 3 # x = 3   |
 
+## Types
+
+In Python, the types of values indicate the class to which
+a particular object belongs.
+
+The behavior of an object of a specific class, including the available
+operations and methods, depends on its type.
+
+### Numerical Types
+
+Python supports several built-in numeric types:
+
+```python
+>>> type(41)
+<class 'int'>
+
+>>> type(0.36)
+<class 'float'>
+
+>>> type(3.14j)
+<class 'complex'>
+```
+
+#### Immutability of Numeric Types
+
+Numeric types in Python are immutable, which means that once assigned,
+the value of the object cannot be changed.
+
+This also means that any mathematical operation generates a new object
+as the result, including operations with assignment.
+
+```python
+>>> x = 100
+>>> id(x)
+4414086488
+
+>>> x += 11
+>>> id(x)
+4414087523
+```
+
+#### Floating-Point Numbers Problem
+
+For all implementations of floating-point arithmetic following the IEEE 754[^28]
+standard, there exists a precision problem.
+
+Floating-point numbers in Python are implemented using the IEEE 754 standard.
+Some issues typical of this standard may also manifest in Python[^29].
+
+```python
+>>> 0.1 + 0.1 + 0.1 == 0.3
+False
+```
+
+Python offers various methods to address issues related to the representation
+of floating-point numbers:
+
+1. Using functions from the `math` module:
+```python
+>>> import math
+>>> math.isclose(0.1 + 0.1 + 0.1, 0.3)
+True
+```
+
+2. Applying the rounding function with specified precision during comparison:
+```python
+>>> round(0.1 + 0.1 + 0.1, ndigits=1) == round(0.3, ndigits=1)
+True
+```
+
+3. Utilizing specialized data types that preserve precision,
+  such as Decimal[^30] and Fraction[^31]:
+
+```python
+>>> import decimal
+>>> decimal.Decimal('0.1') * 3 == decimal.Decimal('0.3')
+True
+
+>>> import fractions
+>>> fractions.Fraction(1, 10) * 3 == fractions.Fraction(3, 10)
+True
+```
+
+The choice of an appropriate method depends on the specific situation
+and precision requirements.
+
+#### Type Conversion
+
+There is implicit type conversion between numeric types, occurring with
+the widening of the numeric space: `int` → `float` → `complex`.
+
+```python
+>>> 1 + 0.1 + 1.1j
+(1.1+1.1j)
+```
+
+Explicit type conversion is also possible and sometimes even desirable:
+
+```python
+>>> int()
+0
+
+>>> float(1)
+1.0
+
+>>> complex(1.0)
+(1.0+0j)
+```
+
+> [!CAUTION]
+>
+> It is advisable not to use type conversion in the opposite direction!
+
+#### Auxiliary Numeric Methods
+
+In addition to [arithmetic operations](#opertors), the language offers a set
+of built-in methods[^11] and auxiliary functions[^32] from the `math` module.
+
+Here are some of them: `abs`, `divmod`, `pow`, `math.pow`, `round`,
+`math.trunc`, `math.floor`, `math.ceil`, `math.sqrt`, `math.cbrt`, `math.exp`,
+`math.log`, `math.log2`, `math.log10`.
+
+```python
+>>> abs(-0.345)
+0.345
+
+>>> divmod(5, 2) # same as (5 // 2, 5 % 2)
+(2, 1)
+
+>>> pow(5, 2) # same as 5 ** 2
+25
+
+>>> import math
+>>> math.pow(5, 2)
+25.0
+
+>>> round(5.35, 1)
+5.3
+
+>>> math.trunc(5.35)
+5
+
+>>> math.floor(5.35)
+5
+>>> math.floor(-5.35)
+6
+
+>>> math.ceil(5.35)
+6
+>>> math.ceil(-5.35)
+5
+
+>>> math.sqrt(25) # same as 25 ** 1/2
+5.0
+
+>>> math.cbrt(27) # same as 27 ** 1/9
+3.0
+
+>>> math.exp(2) # close to math.e ** 2
+7.38905609893065
+
+>>> math.log(2)
+0.6931471805599453
+
+>>> math.log2(4) # same as math.log(4, 2)
+2.0
+
+>>> math.log10(100) # same as math.log(100, 10)
+2.0
+```
+
+### Boolean
+
+Boolean values can be `True` or `False`. As mentioned in the literals section,
+[boolean values](#boolean) have a fixed representation.
+
+Values of any type can be explicitly converted to boolean using
+the built-in `bool` method or implicitly when the interpreter gives priority
+to the boolean type over others.
+
+```python
+>>> bool(1)
+True
+
+>>> bool(0)
+False
+
+>>> bool(-1)
+True
+
+>>> bool('')
+False
+
+>>> bool(None)
+False
+
+>>> not 0
+True
+
+>>> not ''
+True
+
+>>> not None
+True
+
+>>> not 1
+False
+```
+
+> [!TIP]
+>
+> Explicit conversion to boolean is not encouraged.
+
+#### Short-circuit Evaluation
+
+When performing logical operations with boolean values, short-circuit
+evaluation[^33] occurs, meaning that the second operand is not evaluated
+if the first one satisfies the condition of the operator.
+
+```python
+>>> True or False
+True
+
+>>> False and True
+False
+```
+
+**How to check this?**
+Use a method as the second operand that would be executed only
+if the evaluation reaches it.
+
+```python
+>>> True or print('Checked')
+True
+
+>>> False and print('Checked')
+False
+
+>>> True and print('Checked')
+'Checked'
+```
+
+### Sequences
+
+Sequences or series are objects that store multiple values one after another.
+
+| | Operator  | Expected Result                                               |
+|-|:----------|:--------------------------------------------------------------|
+| | x in s    | True if element or series is in the sequence                  |
+| | x not in s| True if element/series is not in the sequence                 |
+|1| s + t     | Concatenation                                                 |
+|1| s * n     | Repetition of the series n times                              |
+|1| s[i]      | Return the element of the sequence at index i                 |
+|*| s[i:j]    | Return a slice from the series, starting from index i up to j |
+|*| s[i:j:k]  | Return a slice from the series, from i up to j with step k    |
+
+`*` — in the case of slices, all parameters are optional, so writing s[:]
+  will create a new slice with the same contents as the original.
+
+`1` — Concatenation, repetition, element retrieval, and slicing by indexes
+  are not defined for sets since sets have no inherent order.
+
+```python
+>>> word = 'peace'
+>>> id(word)
+4398765168
+
+>>> not_war = word[:]
+>>> id(not_war)
+4398765168
+```
+
+> [!NOTE]
+>
+> The sequence `i:j:k` start index, end index, and step — used quite frequently.
+> In this case, the range should be read as `[i:j)`, meaning the left boundary
+> is included, and the right one is excluded.
+
+> [!TIP]
+>
+> Working with slices also involves negative indices and steps.
+> For example, you can reverse a sequence using `s[::-1]`.
+
+> [!NOTE]
+>
+> If you don't like the format of slice notation `[::]`, you can use
+> the built-in method `slice([start, ]stop[, step=None])` and pass it
+> as a parameter like `string[slice(10)]`.
+
+| | Method        | Expected Result                                           |
+|-|:--------------|:----------------------------------------------------------|
+| | len(s)        | Length of the series                                      |
+|*| min(s)        | Element with the minimum value in the series              |
+|*| max(s)        | Element with the maximum value in the series              |
+|*| sorted(s)     | Sorted sequence                                           |
+|1| reversed(s)   | Reversed sequence as an iterator                          |
+| | iter(s)       | Iterator over the elements                                |
+| |enumerate(s, i)| Iterator over pairs key: element                          |
+| |filter(f, s)   | Iterator over the filtered sequence                       |
+| |map(f, s[, *s])| Iterator over the modified sequence                       |
+|*|zip(*s)        | Iterator over the transposed series                       |
+|1|s.index(x,i,j) | Start index of the el./series in the seq. with a window   |
+|1|s.count(x)     | Number of occurrences of the el./series in the sequence   |
+
+`*` — For `min` and `max`, a simplified version of the method descriptor
+  is given.
+
+`1` — The methods `reversed`, `.index`, and `.count` are not defined for sets,
+  as sets do not have a defined order of elements.
+
+#### Strings
+
+As you might have guessed from the example above, strings are a special case of
+a sequence.
+
+Strings are sequences of characters[^34], each of which represents a byte.
+
+```python
+>>> some_string = 'some not that long of a string'
+>>> type(some_string)
+<class 'str'>
+```
+
+To view the string as a sequence of bytes, you can use the built-in `bytes`[^35]
+or `bytearray`[^36] methods, calling the `.hex` method with a specified
+separator character as an argument.
+
+```python
+>>> bytes(some_string, 'latin-1').hex(',')
+'73,6f,6d,65,20,6e,6f,74,20,74,68,61,74,20,6c,6f,6e,67,20,6f,...'
+```
+
+Strings are an immutable type, meaning that once assigned, the value of
+the stored object cannot be changed.
+
+Strings can be explicitly converted to numeric types, provided that
+the string contains only permitted digits and numeric-form letters to which
+it is converted:
+
+```python
+>>> int('41') # same as int('41', 10)
+41
+
+>>> int('29', 16)
+41
+
+>>> int('51', 8)
+41
+
+>>> int('101001', 2)
+41
+
+>>> float('41.5')
+41.5
+
+>>> complex('10.1j')
+10.1j
+```
+
+> [!TIP]
+>
+> Type conversion is a common task, and it's better to master it in advance.
+> For example, when getting a value from the input method, the user-entered
+> value is returned as a string, regardless of what was entered.
+> If a numeric response is expected, it makes sense to convert the value
+> to perform arithmetic operations or compare it with a benchmark.
+
+Values of other types can be converted to strings using the `str` method[^37],
+the `format` formatting function[^38], or formatted[^25] strings[^39].
+
+```python
+>>> str(41) # str(0b101001) str(0o51) str(0x29)
+'41'
+
+>>> str(41.5)
+'41.5'
+
+>>> str(True)
+'True'
+
+>>> format(41, '>#05d')
+'00041'
+
+>>> format(41, '>#' '10b')
+'  0b101001'
+
+>>> format(77, 'c')
+'M'
+
+>>> '%x' % 41
+'29'
+
+>>> f'{41:#0x}'
+'0x29'
+```
+
+[!TIP]
+
+Type conversion to a string, number, or any other type is limited by the class
+from which the object of that type is inherited and the presence of a method
+in that class that will be called when the interpreter attempts to convert
+the type.
+
+More details on this will be covered in the section on classes
+and their subclasses.
+
+All sequence operators work with strings.
+
+You can determine the length, find the index of a letter or word within
+a string, count the number of repetitions, reverse the string, and so on.
+
+The string class extends the functionality for working with sequences with the
+following methods[^40]:
+
+| String Class Method           | Arguments       | Result                    |
+|:------------------------------|:----------------|:--------------------------|
+|||                                               s = 'schwarze Katze straße' |
+| Modification                                                              |||
+| s.capitalize()                |                 | 'Schwarze katze straße'   |
+| s.title()                     |                 | 'Schwarze Katze Straße'   |
+| s.upper()                     |                 | 'SCHWARZE KATZE STRASSE'  |
+| s.lower()                     |                 | 'schwarze katze straße'   |
+| s.casefold()                  |                 | 'schwarze katze strasse'  |
+| s.removeprefix(prf)           |'schwarze '      | 'Katze straße'            |
+| s.removesuffix(sfx)           |' straße'        | 'Schwarze katze'          |
+| s.strip([chs])                |'s'              | 'chwarze Katze straße'    |
+| s.lstrip([chs])               |'s'              | 'chwarze Katze straße'    |
+| s.rstrip([chs])               |'e'              | 'schwarze Katze straß'    |
+| s.replace(old, new[, count]]) |'ß', 'ss'        | 'schwarze Katze strasse'  |
+| Decoding                                                                  |||
+| s.encode(enc, err)            |'ascii', 'ignore'| b'schwarze Katze strae'   |
+| Search                                                                    |||
+| s.find(ss[, s[, e]])          |'å'              | -1                        |
+| s.rfind(ss[, s[, e]])         |'ra'             | 17                        |
+| s.index(ss[, s[, e]])         |'å'              | ValueError                |
+| s.rindex(ss[, s[, e]])        |'ra'             | 17                        |
+| s.count(ss[, s[, e]])         |'a'              | 3                         |
+| Validation                                                                |||
+| s.startwith(sf[, s[, e]])     |'sch'            | True                      |
+| s.endwith(sf[, s[, e]])       |'sch'            | False                     |
+| s.isalnum()                   |                 | False                     |
+| s.isalpha()                   |                 | False                     |
+| s.isascii()                   |                 | False                     |
+| s.isnumeric()                 |                 | False                     |
+| s.isdecimal()                 |                 | False                     |
+| s.isdigit()                   |                 | False                     |
+| s.isidentifier()              |                 | False                     |
+| s.islower()                   |                 | False                     |
+| s.isupper()                   |                 | False                     |
+| Decomposition                                                             |||
+| s.partition(sep)              |' '        |('schwarze', ' ', 'Katze straße')|
+| s.rpartition(sep)             |' '        |('schwarze Katze', ' ', 'straße')|
+| s.split(sep, max)             |'a', 2     |['schw', 'rze K', 'tze straße']  |
+| s.rsplit(sep, max)            |'a', 2     |['schwarze K', 'tze str', 'ße']  |
+| Alignment                     ||                                  s = 'cat' |
+| s.center(w[, f])              |10, '*'          | '\*\*\*cat\*\*\*\*'       |
+| s.ljust(w[, f])               |10, '*'          | 'cat\*\*\*\*\*\*\*'       |
+| s.rjust(w[, f])               |10, '*'          | '\*\*\*\*\*\*\*cat'       |
+| Formatting                    ||                       s = '{} eats {food}' |
+| s.format(*a, **kw)            |'cat', food='tuna'| 'cat eats tuna'          |
+| Concatenation                 ||                                    s = ';' |
+| s.join(iter)                  | ['one', 'two']  | 'one;two'                 |
+
+#### Tuples
+
+A tuple[^41] is an immutable sequence of elements.
+
+```python
+>>> t1 = (1, 'one', b'uno')
+>>> t1
+(1, 'one', b'uno')
+
+>>> t2 = 1, 'one', b'uno'
+>>> t2
+(1, 'one', b'uno')
+
+
+>>> t3 = tuple([1, 'one', b'uno'])
+>>> t3
+(1, 'one', b'uno')
+```
+
+The final variant with the named method call[^42] is a way to convert
+any iterable type to a tuple.
+
+Tuples are used for passing data between different parts of code and can serve
+as an expectation interface, as their length does not change. This allows
+an agreement on what each position in the tuple represents.
+
+Tuples inherit the operators and methods of enumerations. They can be
+concatenated to form a new tuple, repeated n times, have their length obtained,
+check for the existence of an element, get a slice, and also check whether
+a variable points to the same tuple or not.
+
+Maximum and minimum elements by value can only be obtained if they can be
+converted to the same type.
+
+```python
+>>> max((1, 2, 3, 20, -2, 60, .5, 100.1))
+100.1
+```
+
+As this type belongs to immutable ones, you cannot change the length
+of the tuple or assign a new value to its element.
+
+```python
+>>> t1[0] = 10
+TypeError: 'tuple' object does not support item assignment
+```
+
+However, if an element of the tuple has a mutable type, it can be mutated.
+
+```python
+>>> t2 = ([1, 2, 3, 4],)
+>>> t2[0][0] = 10
+>>> t2
+([10, 2, 3, 4],)
+```
+
+#### Lists
+
+A list[^43] is the most common type for representing sequences. Similar
+to a tuple, it can also store elements of different types. However, unlike
+a tuple, a list belongs to mutable types. This means that its elements
+can be deleted, added, replaced, and sorted in place.
+
+```python
+>>> l1 = [1, 'one', b'uno']
+>>> l1
+[1, 'one', b'uno']
+
+>>> l2 = list([1, 'one', b'uno'])
+>>> l2
+[1, 'one', b'uno']
+```
+
+The last option with the invocation of a named method[^44] is a way to convert
+any enumerable type to a list.
+
+> [!TIP]
+>
+> It is better to avoid using named methods when initializing from "clean" sets,
+> as it may look redundant.
+
+As mentioned before, mutable types of sequences can be easily modified.
+There are several operators and methods for this:
+
+| | Operator      | Expected Result                                           |
+|-|:--------------|:----------------------------------------------------------|
+| | s[i] = x      | Sets the element at the specified index                   |
+| | s[i:j] = t    | Replaces part of the sequence with values from an iterable|
+| | del s[i:j]    | Deletes part of the sequence; s[i:j] = []                 |
+|1| s[i:j:k] = t  | Replaces specified elements with values from an iterable  |
+| | del s[i:j:k]  | Deletes specified elements                                |
+
+| | Method        | Expected Result                                           |
+|-|:--------------|:----------------------------------------------------------|
+|2| s.append(x)   | Appends an element to the end s[len(s):len(s)] = [x]      |
+|3| s.extend(t)   | Appends a series to the end s[len(s):len(s)] = t          |
+|4| s.insert(i, x)| Inserts an element at the specified position s[i:i] = [x] |
+| | s.pop([i])    | Pops an element from the array, w/o an idx, — from the end|
+| | s.copy()      | Creates a copy of the list s[:]                           |
+|5| s.reverse()   | Reverses the sequence                                     |
+|6| s.remove(x)   | Removes the nearest element from the beginning, by value  |
+| | s.clear()     | Clears the list del s[:]                                  |
+
+> [!NOTE]
+>
+> 1. The number of elements to replace in the iterable object must match
+>    the number of replacements;
+> 2. Adding elements to the end of the list is a relatively inexpensive
+>    operation `O(1)`;
+> 3. Extending the list can be done through concatenation assignment `s += t`,
+>    but it is a more expensive operation.
+>    I consider `s[len(s):len(s)] = [x]|t` to be the most successful
+>    and versatile option, which is worth preferring;
+> 4. The most expensive operation `O(n)` with lists that should be avoided;
+> 5. The sequence reversal method modifies the sequence itself and does not
+>    return a result;
+> 6. Removing an element by value is an expensive operation `O(n)`,
+>    as the desired element must first be found among all elements
+>    of the sequence.
+
+
+```python
+>>> l1[0] = 10
+>>> l1
+[10, 'one', b'uno']
+```
+
+For descendants of the List class, there is one more method:
+
+| | Method        | Expected Result                                           |
+|-|:--------------|:----------------------------------------------------------|
+|1| s.sort()      | Sorts the elements within the sequence                    |
+
+`1` — Just like the `.reverse` method, the `.sort` method modifies
+  the sequence and returns nothing. Both of these methods save memory as they
+  do not create a copy, which is beneficial for large sequences. If the sequence
+  is of an acceptable size, it is better to use the built-in methods reversed
+  and sorted.
+
 ---
 
 [^1]: <https://www.python.org/> "Python official site"
