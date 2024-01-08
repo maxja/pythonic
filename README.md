@@ -1282,6 +1282,384 @@ For descendants of the List class, there is one more method:
   is of an acceptable size, it is better to use the built-in methods reversed
   and sorted.
 
+#### Sets
+
+The main thing to know about sets[^45] is that they store unique elements
+in an unordered fashion!
+
+```python
+>>> s1 = {1, 'one', b'uno', 1}
+>>> s1
+{b'uno', 1, 'one'}
+
+>>> s2 = set([1, 'one', b'uno', b'uno'])
+>>> s2
+{1, b'uno', 'one'}
+```
+
+The second important feature of sets is that they allow solving problems
+of set theory[^46]:
+
+| Operator      | Expected Result                                             |
+|:--------------|:------------------------------------------------------------|
+| s1 \| s2      | Union of sets                                               |
+| s1 & s2       | Intersection of sets                                        |
+| s1 - s2       | Difference of sets s1 and s2                                |
+| s1 ^ s2       | Symmetric difference of sets s1 and s2                      |
+| s1 < s2       | True if s1 is a proper subset of s2                         |
+| s1 <= s2      | True if s1 is a subset of or equal to s2                    |
+| s1 == s2      | True if sets are equal                                      |
+| s1 >= s2      | True if s1 contains s2 or is equal to it                    |
+| s1 > s2       | True if s1 contains s2                                      |
+
+> [!NOTE]
+>
+> Any immutable hashable value can be an element of a set, for example:
+> a number, string, object, tuple, but not a list or another set.
+
+Sequence operators are applicable to sets as they are a special case of
+sequences. However, operators related to index operations are not defined.
+
+Like with sequence methods, set methods are applicable, except those
+that involve indices. For example, sorting is not possible since set elements
+are stored without a specific order, and counting repeated elements is not
+feasible as set elements are always unique!
+
+Sets have auxiliary methods:
+
+| Method                   | Expected Result                                  |
+|:-------------------------|:-------------------------------------------------|
+|s.isdisjoint(z)           | True if s and z have no intersection `not(s & z)`|
+|s.issubset(z)             | True if s is a subset of z `s <= z`              |
+|s.issuperset(z)           | True if s contains set z `s >= z`                |
+|s.union(*z)               | Union of s and *z `s \| z \| ...`                |
+|s.intersection(*z)        | Intersection of s and *z `s & z & ...`           |
+|s.difference(*z)          | Difference of s and *z `s - z - ...`             |
+|s.symmetric_difference(z) | Symmetric difference of s and z `s ^ z`          |
+|s.copy()                  | Copy of the set                                  |
+|s.add(e)                  | Adds an element to the set `s \|= {e}`           |
+|s.pop()                   | Removes and returns an arbitrary element         |
+|s.remove(e)               | Removes an elem. from the set, or raises an err  |
+|s.discard(e)              | Removes an elem. from the set `s -= {e}`         |
+|s.update(*z)              | Updates s by add elem. from *z `s \|= z \| ...`  |
+|s.intersection_update(*z) | Leaves common elem. of s and *z `s &= z & ...`   |
+|s.difference_update(*z)   | Updates s by remove elem. from *z `s -= z \| ...`|
+|s.symmetric_difference_update(z) | Updates s with the symmetric difference z |
+|s.clear()                 | Clears the set                                   |
+
+#### Dictionaries
+
+They are sometimes called hash maps or associative arrays. Implementations
+in different languages and platforms may vary, but they share a similar
+representation principle: for each key, there is an associated value.
+Keys are a list of immutable hashable values.
+
+Dictionaries[^47] provide fast access by key `O(1)`. Otherwise, searching for
+a value occurs through iteration `O(n)`.
+
+> [!NOTE]
+>
+> Until version 3.6, the order of keys was arbitrary, similar to the values
+> in sets.
+
+```python
+>>> d1 = {1: 'one', 'one': 1, b'one': 1, 1: 'uno'}
+>>> d1
+{1: 'uno', 'one': 1, b'one': 1}
+
+>>> d2 = dict([(1, 'one'), ('one', 1), (b'one', 1), (1, 'uno')])
+>>> d2
+{1: 'uno', 'one': 1, b'one': 1}
+```
+
+Not all sequence operators and methods are available for dictionaries,
+but those that are implemented work with keys.
+
+| Operator        | Expected Result                                           |
+|:----------------|:----------------------------------------------------------|
+| x in d          | True if the key is in the dictionary                      |
+| x not in d      | True if the key is not in the dictionary                  |
+| d[i]            | Element of the dictionary by key or KeyError              |
+| d[i] = x        | Sets the element of the dictionary by key                 |
+| del d[i]        | Deletes the key-value pair from the dictionary            |
+| d1 \| d2        | Combination of dictionaries                               |
+| d1 \|= d2       | Update the combination of dictionaries                    |
+
+| Method          | Expected Result                                           |
+|:----------------|:----------------------------------------------------------|
+| len(d)          | Length of the dictionary / number of key-value pairs      |
+| reversed(d)     | Reversed series of keys, as there is an order             |
+| enumerate(d, i) | Iterator over pairs of ordinal number and key             |
+| filter(f, d)    | Iterator over the filtered sequence of keys               |
+| map(f, d[, *d]) | Iterator over the modified sequence of keys               |
+| zip(*d)         | Iterator over series of tuples with the key as value      |
+
+Dictionaries, like other sequences, have auxiliary methods:
+
+| Method               | Expected Result                                      |
+|:---------------------|:-----------------------------------------------------|
+| d.clear()            | Clears the dictionary                                |
+| d.copy()             | Creates a copy of the dictionary                     |
+| d.get(k [, v])       | Returns the value for the key                        |
+| d.items()            | Returns key-value pairs                              |
+| d.keys()             | Returns keys                                         |
+| d.values()           | Returns values                                       |
+| d.pop(k [, v])       | Removes the value from the d by key and returns it   |
+| d.popitem()          | Removes and returns a value from the beginning       |
+| d.update(*dd)        | Updates the dictionary from dictionaries-donors      |
+| d.setdefault(k[, v]) | Sets the value if the key is not found               |
+
+> [!TIP]
+>
+> In addition to the listed methods on dictionary instances, there is a class
+> method that allows creating a dictionary with different keys
+> and initializing them with a single value:
+>
+> ```python
+> >>> dict.fromkeys(('one', 'two', 'three'), 0)
+> >>> {'one': 0, 'two': 0, 'three': 0}
+> ```
+
+#### Ranges
+
+This is an auxiliary integer sequence.
+
+```python
+>>> r1 = range(1, 10, 2)
+>>> list(r1)
+[1, 3, 5, 7, 9]
+```
+
+A range[^48] represents a sequence of integers and becomes an actual sequence
+only when requested for unpacking.
+
+In combination with other structures and the sequence method `zip`, it can
+be used to solve a variety of tasks.
+
+## Scripts
+
+At the current stage of language knowledge, it's sufficient for writing
+a simple but functional program. This program will execute a sequence
+of instructions step by step: prompt the user to input data, process
+the received values, and perform logical and arithmetic operations.
+
+For example, let's write a utility that expects input of a string from
+the `uname` command with the `-a` flag. Then, it will display basic
+information about the current operating environment in the form of a table.
+
+At this stage, we have not yet studied working with threads and
+file descriptors, and we do not know how to run console commands from
+Python code and capture their responses. However, we already have all
+the necessary knowledge!
+
+> [!TIP]
+>
+> When writing a program, it is worth assessing the requirements.
+> This allows us to understand whether we have the necessary tools,
+> define the boundaries of the solution, and outline the approach
+> to the solution.
+
+**Let's assess the input parameters.**
+
+In all modern systems, there is a built-in utility available in console mode
+called `uname`. It provides information about the current operating system:
+the kernel name, network name, kernel version, architecture for which
+the operating system is built, and other details.
+
+To get the result, it is necessary to execute it in the terminal shell.
+There are many shells, here are just a few: `sh`, `bash`, `zsh`, `fish`.
+For Windows operating systems, you can use PowerShell, `pwsh`, or `cmd`.
+In any of them, you can enter `uname -a` and, by pressing Enter,
+get the desired description string.
+
+The final strings will differ from version to version of the operating system:
+
+> Here is a example of `uname -a` output on a different systems:
+>
+> `Darwin maxbook.local 23.2.0 Darwin Kernel Version 23.2.0: Wed Nov 15 21:54:10 PST 2023; root:xnu-10002.61.3~2/RELEASE_X86_64 x86_64`
+>
+> `Linux mumenstallu 5.14.0-284.30.1.el9_2.aarch64 #1 SMP PREEMPT_DYNAMIC Fri Sep 15 19:19:23 UTC 2023 aarch64 aarch64 aarch64 GNU/Linux`
+>
+> `Windows_NT MaxWinITX 10.0 22621 x86_64 MS/Windows (Windows 11)`
+
+But the principle of forming the string remains unchanged[^49]:
+
+> "\<sysname\> \<nodename\> \<release\> \<version\> \<machine\>\n"
+
+**Now we need to understand the requirements for the output of the task.**
+
+Let's assume that the result of the solution should be the output
+of information in the form of a table:
+
+```
+|------------|--------------|---------|---------|
+| Sysname    | Nodename     | Release | Machine |
+|------------|--------------|---------|---------|
+| Windows_NT | homepc.local |    10.0 | x86_64  |
+|------------|--------------|---------|---------|
+```
+
+The width of the columns should adapt to the longest word in the column.
+The values of the columns Sysname, Nodename, Machine will be left-aligned,
+and for Release - right-aligned.
+
+**Developing a Solution.**
+
+To create a solution, it is necessary to formulate a chain of questions
+and answer them. The answer is a part of the solution.
+
+It's not possible to answer all questions at once, but in the process
+of clarification and obtaining answers to some of them,
+new clarifying questions arise.
+
+1. How can the result of executing `uname -a` be captured?
+2. How to extract parts of the string and assign them to variables?
+3. How to clean the string from unnecessary characters?
+4. How to calculate the length of the value and the column name?
+5. How to determine which of them is longer?
+6. How to display the value with alignment to the specified side
+  and fixed width?
+7. How to display multiline text on the screen?
+
+<details>
+  <summary>Check the answers:</summary>
+
+1. To capture the result of executing `uname -a` in Python,
+  you can use the `|` (pipe) symbol to pass the output of one command
+  to the input of another.
+  The complete run looks like this: `uname -a | python3 ./uname_table_view.py`.
+  To get a string from the input, you can use the [`input`](#input) function.
+2. Based on the output format of `uname -a`, it can be concluded that
+  a space is the delimiter between elements. In this case, the string method
+  `.split` with a space as the delimiter can be used to extract parts of
+  the string and assign them to variables.
+  However, real results from the `uname -a` command show that this principle
+  is not always followed. The solution includes taking a certain number
+  of elements from the left and right, leaving the \<version\> segment
+  untouched. Additionally, the `.rstrip` method can be used to remove extra
+  characters after specifying the architecture in the \<machine\> segment.
+3. To calculate the length of a string, you can use the sequence method `len`.
+  To determine the longest value in a column, you can use sequence methods
+  `max` and `map`. Using variables storing sysname, nodename, release,
+  and machine, you can create a dictionary with known keys and values.
+  Then, `map` can be used to create a list of tuples containing the lengths
+  of strings, and dictionary methods `.keys` and `.values` will return lists
+  of keys and values while preserving order for analyzing their lengths.
+4. For aligning strings, Python provides string instance methods: `.center`,
+  `.ljust`, and `.rjust`. The `.format` method can be used for formatting
+  within a template string and also supports specifying alignment and width.
+  Alternatively, the `%` operator allows defining alignment and supports
+  the specified width. Formatting via the `%` operator can be combined with
+  formatted strings (`f''`), allowing you to reference variables from the
+  string and use formatting syntax similar to `.format`.
+5. Multiline text can be displayed either by multiple calls to the `print`
+  method or by passing a text block with line breaks as an argument.
+</details>
+
+<details>
+  <summary>Check the solution:</summary>
+
+```python
+sysname, nodename, release, rest = input()\
+  .split(' ', 3)
+# Using `input`, fetch the string from the input.
+# Input is considered complete after receiving the end-of-line character.
+# Using `.split`, take the first 3 values separated by a space,
+# and the rest.
+# The backslash `\` is used to continue the expression on the next line.
+# In Python, multiple assignment is possible, where the elements on the left
+# side can be fewer than on the right.
+
+_, machine = rest\
+  .rstrip(' ()/1GLMNSUWdgiilmnnosuwx')\
+  .rsplit(' ', 1)
+# Clear the right part of the string from "garbage" on the right using the
+# `.rstrip` method.
+# A unique set of characters following the architecture from the examples
+# is used as a dictionary.
+# The underscore (_) is used to ignore the value in multiple assignment.
+
+uname_params = {
+  'sysname': sysname,
+  'nodename': nodename,
+  'release': release,
+  'machine': machine
+}
+
+columns_widths = tuple(
+  map(
+    max,
+    zip(
+      map(len, uname_params.keys()),
+      map(len, uname_params.values())
+    )
+  )
+)
+# To calculate the column widths, choose the maximum length
+# among header and value strings.
+# Using `.keys` and `.values` on the uname_params dictionary, get 2 lists.
+# For each list, use the `map` method with the method name `len`
+# without calling.
+# Thus, for each element, `len` will be called, and the result will be
+# a list of string lengths.
+# The `zip` method combines these two lists into a list of tuples
+# with two elements.
+
+separator_row = """|-{0:-<{1}}-|-{0:-<{2}}-|-{0:->{3}}-|-{0:-<{4}}-|""".format(
+  '-',
+  *columns_widths
+)
+# The template string has substitution areas, looking like `{0:-<{1}}`.
+# Here `{}` is the substitution area, `0` is the index of the argument from
+# the `.format` call, `-` is the symbol used for space filling, `<` indicates
+# left alignment, `{1}` is the argument substitution place from `.format`.
+
+head_row = """| {0: <{4}} | {1: <{5}} | {2: >{6}} | {3: <{7}} |""".format(
+  *(tuple(
+      map(str.capitalize, uname_params.keys())
+      # Since according to the task, column headers should be words
+      # with a capital letter,
+      # use `map` to apply the `str.capitalize` function
+      # to all dictionary keys.
+  ) + columns_widths)
+  # Form a tuple from strings and lengths, then concatenate it with
+  # a tuple of lengths, unpack the result as arguments for the `.format` call.
+)
+
+value_row = f"| %(sysname) -{columns_widths[0]}s \
+| %(nodename) -{columns_widths[1]}s \
+| %(release) +{columns_widths[2]}s \
+| %(machine) -{columns_widths[3]}s |" % uname_params
+# Using the overloaded `%` operator, format the output of values
+# from the dictionary, referencing by names `%(name)s`,
+# where `s` indicates the data type — string.
+# Since it is not a regular string but with the `f` prefix, it allows
+# substituting variable values from the scope: `f'{variable}'`.
+# The complete substitution format can be read as follows:
+# `%()` — substitution area,
+# ` ` — space filling symbol, coming after the round bracket,
+# `-` — left alignment flag, `{var}` — variable substitution,
+# `s` — type of the substituted value.
+
+print(
+  '\n'.join([
+    separator_row,
+    head_row,
+    separator_row,
+    value_row,
+    separator_row,
+  ])
+  # Having separate strings, they need to be joined. Concatenation of strings
+  # using the overloaded `+` operator is an expensive operation.
+  # It is better to use the method of the string class inheritor `.join`.
+  # The string on which this method is called becomes the joining string,
+  # i.e., it will be repeated between elements that need to be joined.
+  # The method argument is an enumeration.
+)
+# The `print` method is used to output the result.
+```
+</details>
+
 ---
 
 [^1]: <https://www.python.org/> "Python official site"
